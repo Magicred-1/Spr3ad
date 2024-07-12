@@ -7,7 +7,7 @@ import { parseAbi, decodeEventLog } from 'viem'
 
 async function main() {
   const contractABI = [
-    "function getResponse(uint runId) public view returns (string memory)",
+    "function getResponse(uint runId) public view returns (string[] memory)",
     "function sendMessage(string memory _message, string[] memory tags) public returns (uint)"
   ];
 
@@ -19,14 +19,12 @@ async function main() {
 
   // Create a contract instance
   const contract = new ethers.Contract(contractAddress, contractABI, signer);
-
-  let test = await contract.getResponse(0);
-  console.log(test)
+  const resptest = await contract.getResponse(6561);
+  console.log("resptest", resptest);
   // The content of the image you want to generate
-  const message = await getUserInput();
   const testmessage = "L2con by Epic Web3 was a blast!  850 attendees in total! 30 speakers! Amazing discussions brought by the leading builders in web3! Very thankful to all of you for making it happen"
   // Call the startChat function
-  const transactionResponse = await contract.sendMessage(message, ["l2con", "food", "football", "apecoin", "architecture", "conference", "blockchain"]);
+  const transactionResponse = await contract.sendMessage(testmessage, ["l2con", "food", "football", "apecoin", "architecture", "conference", "blockchain"]);
 
   const receipt = await transactionResponse.wait();
   // Get the return value from the transaction receipt
@@ -37,7 +35,6 @@ async function main() {
   console.log("Message ID:", JSON.stringify(id));
 
   console.log(`Transaction sent, hash: ${receipt.hash}.\nExplorer: https://explorer.galadriel.com/tx/${receipt.hash}`)
-  console.log(`Image generation started with message: "${message}"`);
 
   // loop and sleep by 1000ms, and keep printing `lastResponse` in the contract.
   let lastResponse = await contract.getResponse(id);
