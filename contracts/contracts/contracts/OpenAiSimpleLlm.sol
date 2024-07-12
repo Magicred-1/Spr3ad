@@ -8,7 +8,7 @@ contract OpenAiSimpleLLM {
     IOracle.Message public message;
     mapping(uint => string) public responses;
     IOracle.OpenAiRequest private config;
-    string private request_obligation = "FOR THE FOLLOWING REQUEST, I WILL GIVE YOU AN ARRAY OF TAGS AND YOU MUST MATCH THE TAGS TO THE TEXT BEING SENT. IF YOU DO NOT FIND ANY MATCH, ANSWER WITH AN EMPTY ARRAY LIKE SO []. IF YOU FIND A MATCH, ANSWER WITH AN ARRAY OF THE TAGS THAT MATCH THE TEXT. IF YOU FIND MULTIPLE MATCHES, ANSWER WITH AN ARRAY OF ALL MATCHES LIKE SO ['tag1', 'tag2']";
+    string private request_obligation = "FOR THE FOLLOWING REQUEST, I WILL GIVE YOU AN ARRAY OF TAGS AND YOU MUST MATCH THE TAGS TO THE TEXT BEING SENT. IF YOU DO NOT FIND ANY MATCH, ANSWER WITH 'NO_TAGS'. IF YOU FIND A MATCH, ANSWER WITH AN ARRAY OF THE TAGS THAT MATCH THE TEXT. IF YOU FIND MULTIPLE MATCHES, ANSWER WITH AN ARRAY OF ALL MATCHES LIKE SO tag1,tag2,tag3";
 
     constructor(address initialOracleAddress) {
         oracleAddress = initialOracleAddress;
@@ -30,8 +30,36 @@ contract OpenAiSimpleLLM {
         });
     }
 
-    function getResponse(uint runId) public view returns (string memory) {
-        return responses[runId];
+    function getResponse(uint runId) public view returns (string[] memory) {
+        string memory response = responses[runId];
+        // response should be in the format "tag1,tag2,tag3"
+        // Split the response string into an array
+        bytes memory responseBytes = bytes(response);
+        uint commaCount = 0;
+        for (uint i = 0; i < responseBytes.length; i++) {
+            if (responseBytes[i] == ',') {
+                commaCount++;
+            }
+        }
+        
+        string[] memory tags = new string[](commaCount + 1);
+        uint currentIndex = 0;
+        uint lastCommaIndex = 0;
+        
+        for (uint i = 0; i <= responseBytes.length; i++) {
+            if (i == responseBytes.length || responseBytes[i] == ',') {
+                uint length = i - lastCommaIndex;
+                bytes memory tagBytes = new bytes(length);
+                for (uint j = 0; j < length; j++) {
+                    tagBytes[j] = responseBytes[lastCommaIndex + j];
+                }
+                tags[currentIndex] = string(tagBytes);
+                currentIndex++;
+                lastCommaIndex = i + 1;
+            }
+        }
+        
+        return tags;
     }
 
     function sendMessage(string memory _message, string[] memory tags) public returns (uint){
@@ -68,11 +96,10 @@ contract OpenAiSimpleLLM {
     // @param content The content of the message
     // @return The created message
     function createTextMessage(string memory role, string memory content, string[] memory tags) private view returns (IOracle.Message memory) {
-        string memory prompt = string(abi.encodePacked(request_obligation, " HERE ARE THE TAGS: ["));
+        string memory prompt = string(abi.encodePacked(request_obligation, " HERE ARE THE TAGS: "));
         for (uint i = 0; i < tags.length; i++) {
-            string memory tag = string(abi.encodePacked("'", tags[i], "'"));
-            if (i == tags.length - 1) tag = string(abi.encodePacked(tag, "]"));
-            else tag = string(abi.encodePacked(tag, ", "));
+            string memory tag = tags[i];
+            if (i != tags.length - 1) tag = string(abi.encodePacked(tag, ","));
             prompt = string(abi.encodePacked(prompt, tag));
         }
         prompt = string(abi.encodePacked(prompt, ". THE TEXT IS: ", content));
