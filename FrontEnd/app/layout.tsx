@@ -12,17 +12,34 @@ import {
   WagmiProvider,
 } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { http } from 'viem';
-import { mainnet } from 'viem/chains';
+import { Chain, http } from 'viem';
+import { mainnet, arbitrumSepolia, baseSepolia, scrollSepolia, morphHolesky } from 'viem/chains';
 import { mergeNetworks } from '@dynamic-labs/sdk-react-core';
 
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
+
+const galadriel = {
+  id: 696969,
+  name: 'Galadriel',
+  nativeCurrency: { name: 'Galadriel', symbol: 'GAL', decimals: 18 },
+  rpcUrls: {
+    default: { http: ['https://devnet.galadriel.com'] },
+  },
+  blockExplorers: {
+    default: { name: 'Galadriel Explorer', url: 'https://explorer.galadriel.com' },
+  },
+} as const satisfies Chain
 
 const config = createConfig({
   chains: [mainnet],
   multiInjectedProviderDiscovery: false,
   transports: {
     [mainnet.id]: http(),
+    [galadriel.id]: http(),
+    [arbitrumSepolia.id]: http(),
+    [baseSepolia.id]: http(),
+    [scrollSepolia.id]: http(),
+    [morphHolesky.id]: http(),
   },
 });
 
@@ -46,20 +63,6 @@ const customEVMChains = [
     vanityName: 'Galadriel Devnet',
   }
 ];
-
-const App = () => (
-  <DynamicContextProvider
-    settings={{
-      environmentId: 'REPLACE_WITH_YOUR_ENV_ID',
-      evmNetworks: (networks: any) => mergeNetworks(customEVMChains, networks),
-    }}
-  >
-    <Home />
-  </DynamicContextProvider>
-);
-
-export default App;
-
 
 export default function RootLayout({
   children,
@@ -85,8 +88,7 @@ export default function RootLayout({
           environmentId: "ef3ba85a-0b46-4b8c-aec7-562794bc9fc0",
           walletConnectors: [EthereumWalletConnectors],
           overrides: {
-            
-
+            evmNetworks: (networks: any) => mergeNetworks(customEVMChains, networks),
           }
         }}
       >
@@ -101,11 +103,5 @@ export default function RootLayout({
         </WagmiProvider>
       </DynamicContextProvider>
     </html>
-
-
   );
 }
-
-
-
-
