@@ -12,8 +12,9 @@ import {
 } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Chain, http } from 'viem';
-import { mainnet, arbitrumSepolia, baseSepolia, scrollSepolia, morphHolesky, rootstockTestnet } from 'viem/chains';
+import { mainnet, arbitrumSepolia, baseSepolia, scrollSepolia, morphHolesky, rootstockTestnet, neonDevnet } from 'viem/chains';
 import { mergeNetworks } from '@dynamic-labs/sdk-react-core';
+import { ZeroDevSmartWalletConnectors } from "@dynamic-labs/ethereum-aa";
 
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 
@@ -40,6 +41,7 @@ const config = createConfig({
     [scrollSepolia.id]: http(),
     [morphHolesky.id]: http(),
     [rootstockTestnet.id]: http(),
+    [neonDevnet.id]: http(),
   },
 });
 
@@ -76,7 +78,7 @@ export default function RootLayout({
         settings={{
           // Find your environment id at https://app.dynamic.xyz/dashboard/developer
           environmentId: "ef3ba85a-0b46-4b8c-aec7-562794bc9fc0",
-          walletConnectors: [EthereumWalletConnectors],
+          walletConnectors: [EthereumWalletConnectors, ZeroDevSmartWalletConnectors],
           overrides: {
             evmNetworks: (networks: any) => mergeNetworks(customEVMChains, networks),
           }
