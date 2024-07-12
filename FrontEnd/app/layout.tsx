@@ -12,7 +12,7 @@ import {
 } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Chain, http } from 'viem';
-import { mainnet, arbitrumSepolia, baseSepolia, scrollSepolia, morphHolesky } from 'viem/chains';
+import { mainnet, arbitrumSepolia, baseSepolia, scrollSepolia, morphHolesky, rootstockTestnet } from 'viem/chains';
 import { mergeNetworks } from '@dynamic-labs/sdk-react-core';
 
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
@@ -39,6 +39,7 @@ const config = createConfig({
     [baseSepolia.id]: http(),
     [scrollSepolia.id]: http(),
     [morphHolesky.id]: http(),
+    [rootstockTestnet.id]: http(),
   },
 });
 
