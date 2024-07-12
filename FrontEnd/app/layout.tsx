@@ -4,7 +4,6 @@ import "./globals.css";
 import { lexend } from "@/components/utils/const"
 import {
   DynamicContextProvider,
-  DynamicWidget,
 } from "@dynamic-labs/sdk-react-core";
 import { DynamicWagmiConnector } from "@dynamic-labs/wagmi-connector";
 import {
@@ -13,8 +12,9 @@ import {
 } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Chain, http } from 'viem';
-import { mainnet, arbitrumSepolia, baseSepolia, scrollSepolia, morphHolesky } from 'viem/chains';
+import { mainnet, arbitrumSepolia, baseSepolia, scrollSepolia, morphHolesky, rootstockTestnet, neonDevnet } from 'viem/chains';
 import { mergeNetworks } from '@dynamic-labs/sdk-react-core';
+import { ZeroDevSmartWalletConnectors } from "@dynamic-labs/ethereum-aa";
 
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 
@@ -40,6 +40,8 @@ const config = createConfig({
     [baseSepolia.id]: http(),
     [scrollSepolia.id]: http(),
     [morphHolesky.id]: http(),
+    [rootstockTestnet.id]: http(),
+    [neonDevnet.id]: http(),
   },
 });
 
@@ -71,22 +73,12 @@ export default function RootLayout({
 }>) {
 
   return (
-
-    // <DynamicContextProvider
-    //   settings={{
-    //     environmentId: 'ef3ba85a-0b46-4b8c-aec7-562794bc9fc0',
-    //     walletConnectors: [EthereumWalletConnectors],
-    //   }}>
-
-    //       <DynamicWidget />
-
-    // </DynamicContextProvider>
     <html lang="en">
       <DynamicContextProvider
         settings={{
           // Find your environment id at https://app.dynamic.xyz/dashboard/developer
           environmentId: "ef3ba85a-0b46-4b8c-aec7-562794bc9fc0",
-          walletConnectors: [EthereumWalletConnectors],
+          walletConnectors: [EthereumWalletConnectors, ZeroDevSmartWalletConnectors],
           overrides: {
             evmNetworks: (networks: any) => mergeNetworks(customEVMChains, networks),
           }
