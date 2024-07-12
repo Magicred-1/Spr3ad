@@ -4,7 +4,6 @@ import "./globals.css";
 import { lexend } from "@/components/utils/const"
 import {
   DynamicContextProvider,
-  DynamicWidget,
 } from "@dynamic-labs/sdk-react-core";
 import { DynamicWagmiConnector } from "@dynamic-labs/wagmi-connector";
 import {
@@ -71,16 +70,6 @@ export default function RootLayout({
 }>) {
 
   return (
-
-    // <DynamicContextProvider
-    //   settings={{
-    //     environmentId: 'ef3ba85a-0b46-4b8c-aec7-562794bc9fc0',
-    //     walletConnectors: [EthereumWalletConnectors],
-    //   }}>
-
-    //       <DynamicWidget />
-
-    // </DynamicContextProvider>
     <html lang="en">
       <DynamicContextProvider
         settings={{
