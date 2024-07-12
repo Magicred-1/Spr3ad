@@ -4,7 +4,89 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+<<<<<<< HEAD
 importers:
+=======
+dependencies:
+  '@dynamic-labs/ethereum':
+    specifier: ^2.3.0
+    version: 2.3.0(@dynamic-labs/logger@2.3.0)(@dynamic-labs/rpc-providers@2.3.0)(@types/react@18.0.0)(react-dom@18.0.0)(react@18.0.0)(viem@2.17.3)
+  '@dynamic-labs/ethereum-aa':
+    specifier: ^2.3.0
+    version: 2.3.0(@dynamic-labs/rpc-providers@2.3.0)(@types/react@18.0.0)(eventemitter3@5.0.1)(react-dom@18.0.0)(react@18.0.0)(viem@2.17.3)
+  '@dynamic-labs/sdk-react-core':
+    specifier: ^2.3.0
+    version: 2.3.0(@types/react@18.0.0)(react-dom@18.0.0)(react-native@0.74.3)(react@18.0.0)(viem@2.17.3)
+  '@dynamic-labs/wagmi-connector':
+    specifier: ^2.3.0
+    version: 2.3.0(@dynamic-labs/logger@2.3.0)(@dynamic-labs/rpc-providers@2.3.0)(@dynamic-labs/sdk-react-core@2.3.0)(@dynamic-labs/types@2.3.0)(@dynamic-labs/wallet-connector-core@2.3.0)(@wagmi/core@2.11.7)(eventemitter3@5.0.1)(react@18.0.0)(viem@2.17.3)(wagmi@2.10.10)
+  '@floating-ui/react-dom':
+    specifier: ^2.1.1
+    version: 2.1.1(react-dom@18.0.0)(react@18.0.0)
+  '@radix-ui/react-avatar':
+    specifier: ^1.1.0
+    version: 1.1.0(@types/react-dom@18.0.0)(@types/react@18.0.0)(react-dom@18.0.0)(react@18.0.0)
+  '@radix-ui/react-slot':
+    specifier: ^1.1.0
+    version: 1.1.0(@types/react@18.0.0)(react@18.0.0)
+  '@tanstack/react-query':
+    specifier: ^5.51.1
+    version: 5.51.1(react@18.0.0)
+  '@types/resize-observer-browser':
+    specifier: ^0.1.11
+    version: 0.1.11
+  '@web3auth/base':
+    specifier: ^8.4.0
+    version: 8.4.0(@babel/runtime@7.24.7)
+  '@web3auth/modal':
+    specifier: ^8.4.0
+    version: 8.4.0(@babel/runtime@7.24.7)(react-dom@18.0.0)(react-native@0.74.3)(react@18.0.0)
+  '@web3auth/openlogin-adapter':
+    specifier: ^8.4.0
+    version: 8.4.0(@babel/runtime@7.24.7)
+  '@web3auth/xrpl-provider':
+    specifier: ^8.4.0
+    version: 8.4.0(@babel/runtime@7.24.7)(xrpl@2.14.1)
+  '@yudiel/react-qr-scanner':
+    specifier: 2.0.0-beta.3
+    version: 2.0.0-beta.3(react-dom@18.0.0)(react@18.0.0)
+  aria-hidden:
+    specifier: ^1.2.4
+    version: 1.2.4
+  class-variance-authority:
+    specifier: ^0.7.0
+    version: 0.7.0
+  clsx:
+    specifier: ^2.1.1
+    version: 2.1.1
+  lucide-react:
+    specifier: ^0.408.0
+    version: 0.408.0(react@18.0.0)
+  next:
+    specifier: 14.2.3
+    version: 14.2.3(@babel/core@7.24.8)(react-dom@18.0.0)(react@18.0.0)
+  react:
+    specifier: ^18
+    version: 18.0.0
+  react-dom:
+    specifier: ^18
+    version: 18.0.0(react@18.0.0)
+  react-remove-scroll:
+    specifier: ^2.5.10
+    version: 2.5.10(@types/react@18.0.0)(react@18.0.0)
+  tailwind-merge:
+    specifier: ^2.4.0
+    version: 2.4.0
+  tailwindcss-animate:
+    specifier: ^1.0.7
+    version: 1.0.7(tailwindcss@3.4.1)
+  viem:
+    specifier: ^2.17.3
+    version: 2.17.3(typescript@5.0.2)
+  wagmi:
+    specifier: ^2.10.10
+    version: 2.10.10(@tanstack/react-query@5.51.1)(@types/react@18.0.0)(react-dom@18.0.0)(react-native@0.74.3)(react@18.0.0)(typescript@5.0.2)(viem@2.17.3)
+>>>>>>> 44289529df2b9a10dd05a24ee7993bb411152f42
 
   .:
     dependencies:
@@ -6816,7 +6898,56 @@ snapshots:
       preact: 10.22.1
       sha.js: 2.4.11
 
+<<<<<<< HEAD
   '@dynamic-labs/ethereum@2.3.0(@dynamic-labs/logger@2.3.0)(@dynamic-labs/rpc-providers@2.3.0)(@types/react@18.0.0)(react-dom@18.0.0)(react@18.0.0)(viem@2.17.3)':
+=======
+  /@dynamic-labs/ethereum-aa@2.3.0(@dynamic-labs/rpc-providers@2.3.0)(@types/react@18.0.0)(eventemitter3@5.0.1)(react-dom@18.0.0)(react@18.0.0)(viem@2.17.3):
+    resolution: {integrity: sha512-ryq2n6coPfU+WXig8kgHHnT39NtqZRGiRLU3WVzQu8PG8/a8/QH6/pamh9oKQvAjq/X4+qQcuL7Izbg2f7qpLg==}
+    peerDependencies:
+      viem: ^2.7.6
+    dependencies:
+      '@dynamic-labs/ethereum': 2.3.0(@dynamic-labs/logger@2.3.0)(@dynamic-labs/rpc-providers@2.3.0)(@types/react@18.0.0)(react-dom@18.0.0)(react@18.0.0)(viem@2.17.3)
+      '@dynamic-labs/logger': 2.3.0(eventemitter3@5.0.1)
+      '@dynamic-labs/sdk-api-core': 0.0.460
+      '@dynamic-labs/types': 2.3.0(viem@2.17.3)
+      '@dynamic-labs/utils': 2.3.0(eventemitter3@5.0.1)(viem@2.17.3)
+      '@dynamic-labs/viem-utils': 2.3.0(@dynamic-labs/logger@2.3.0)(@dynamic-labs/types@2.3.0)(@dynamic-labs/utils@2.3.0)(@dynamic-labs/wallet-book@2.3.0)(@dynamic-labs/wallet-connector-core@2.3.0)(viem@2.17.3)
+      '@dynamic-labs/wallet-book': 2.3.0(eventemitter3@5.0.1)(react-dom@18.0.0)(react@18.0.0)(viem@2.17.3)
+      '@dynamic-labs/wallet-connector-core': 2.3.0(@dynamic-labs/logger@2.3.0)(@dynamic-labs/rpc-providers@2.3.0)(@dynamic-labs/types@2.3.0)(@dynamic-labs/utils@2.3.0)(@dynamic-labs/wallet-book@2.3.0)(eventemitter3@5.0.1)
+      '@zerodev/ecdsa-validator': 5.2.3(@zerodev/sdk@5.2.8)(permissionless@0.1.20)(viem@2.17.3)
+      '@zerodev/sdk': 5.2.8(permissionless@0.1.20)(viem@2.17.3)
+      permissionless: 0.1.20(viem@2.17.3)
+      viem: 2.17.3(typescript@5.0.2)
+    transitivePeerDependencies:
+      - '@azure/app-configuration'
+      - '@azure/cosmos'
+      - '@azure/data-tables'
+      - '@azure/identity'
+      - '@azure/keyvault-secrets'
+      - '@azure/storage-blob'
+      - '@capacitor/preferences'
+      - '@dynamic-labs/rpc-providers'
+      - '@netlify/blobs'
+      - '@planetscale/database'
+      - '@react-native-async-storage/async-storage'
+      - '@types/react'
+      - '@upstash/redis'
+      - '@vercel/kv'
+      - bufferutil
+      - encoding
+      - eventemitter3
+      - ioredis
+      - react
+      - react-dom
+      - uWebSockets.js
+      - utf-8-validate
+    dev: false
+
+  /@dynamic-labs/ethereum@2.3.0(@dynamic-labs/logger@2.3.0)(@dynamic-labs/rpc-providers@2.3.0)(@types/react@18.0.0)(react-dom@18.0.0)(react@18.0.0)(viem@2.17.3):
+    resolution: {integrity: sha512-oP1uJX/y4TZspN8q5QIQ4ejnfs/80mDK6W+veK+ZJeccdrS4k86LUSnd2KE23sPqSUTCCY7CwUuQUV5IraQPPw==}
+    peerDependencies:
+      viem: ^2.7.6
+>>>>>>> 44289529df2b9a10dd05a24ee7993bb411152f42
     dependencies:
       '@coinbase/wallet-sdk': 4.0.4
       '@dynamic-labs/rpc-provider-ethereum': 2.3.0(eventemitter3@5.0.1)(viem@2.17.3)
@@ -9166,7 +9297,36 @@ snapshots:
       react: 18.0.0
       react-dom: 18.0.0(react@18.0.0)
 
+<<<<<<< HEAD
   '@zxing/library@0.20.0':
+=======
+  /@zerodev/ecdsa-validator@5.2.3(@zerodev/sdk@5.2.8)(permissionless@0.1.20)(viem@2.17.3):
+    resolution: {integrity: sha512-zeJjYhOW5EWK6XnctPt3iVnrqmrHfb81p/fJKaY4yQnL2ZYPrH37ZgtY1z5COETPCDTm65+jPfc1Zn/dziyAXQ==}
+    peerDependencies:
+      '@zerodev/sdk': ^5.2.1
+      permissionless: ^0.1.18
+      viem: ^2.9.17
+    dependencies:
+      '@zerodev/sdk': 5.2.8(permissionless@0.1.20)(viem@2.17.3)
+      permissionless: 0.1.20(viem@2.17.3)
+      viem: 2.17.3(typescript@5.0.2)
+    dev: false
+
+  /@zerodev/sdk@5.2.8(permissionless@0.1.20)(viem@2.17.3):
+    resolution: {integrity: sha512-mHxiNxZRnE+z3qqeXQtqVjzMEvjabOSj/4qVdqXGKu3471ykxSC5PjCjFl1o8vynqyGoqxiqf8RIX0sp9JsEbA==}
+    peerDependencies:
+      permissionless: ^0.1.18
+      viem: ^2.9.17
+    dependencies:
+      permissionless: 0.1.20(viem@2.17.3)
+      semver: 7.6.2
+      viem: 2.17.3(typescript@5.0.2)
+    dev: false
+
+  /@zxing/library@0.20.0:
+    resolution: {integrity: sha512-6Ev6rcqVjMakZFIDvbUf0dtpPGeZMTfyxYg4HkVWioWeN7cRcnUWT3bU6sdohc82O1nPXcjq6WiGfXX2Pnit6A==}
+    engines: {node: '>= 10.4.0'}
+>>>>>>> 44289529df2b9a10dd05a24ee7993bb411152f42
     dependencies:
       ts-custom-error: 3.3.1
     optionalDependencies:
@@ -11840,7 +12000,20 @@ snapshots:
 
   pathe@1.1.2: {}
 
+<<<<<<< HEAD
   picocolors@1.0.1: {}
+=======
+  /permissionless@0.1.20(viem@2.17.3):
+    resolution: {integrity: sha512-e+jHLOdDvOiHEAIKGPo1HCviTOnwxSkqFmfCQve7Zl1VbeFTBYWZF78fsZlhO5Gje1irfqsh+SCfbpPjFA4fcA==}
+    peerDependencies:
+      viem: ^2.9.17
+    dependencies:
+      viem: 2.17.3(typescript@5.0.2)
+    dev: false
+
+  /picocolors@1.0.1:
+    resolution: {integrity: sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==}
+>>>>>>> 44289529df2b9a10dd05a24ee7993bb411152f42
 
   picomatch@2.3.1: {}
 
