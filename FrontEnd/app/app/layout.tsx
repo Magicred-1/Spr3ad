@@ -10,9 +10,9 @@ export default function AppLayout({
 }>) {
 
     return (
-        <div className="flex flex-col gap-2 h-full">
+        <div className="flex flex-col h-full">
             <Header />
-            <div className="flex-1 h-auto">
+            <div className="flex-1 container">
                 {children}
             </div>
             <Footer />

@@ -87,7 +87,7 @@ export default function RootLayout({
         <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
             <DynamicWagmiConnector>
-              <body className={`overflow-hidden w-full h-screen ${lexend.className}`}>
+              <body className={`h-screen ${lexend.className}`}>
                 {children}
               </body>
             </DynamicWagmiConnector>

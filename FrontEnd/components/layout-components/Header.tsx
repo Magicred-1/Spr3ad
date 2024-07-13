@@ -5,13 +5,13 @@ import {
   } from "@dynamic-labs/sdk-react-core";
   
 function Header() {
-    return (<div className="bg-blue-950 flex justify-around items-center">
-        <Logo />
+    return (<div className="bg-blue-950 flex justify-around items-center w-full">
+        {/* <Logo /> */}
         <div className="flex items-center">
             {[
-                { name: "Discover", link: "/discover" },
-                { name: "Create", link: "/create" },
-                { name: "Browse", link: "/browse" }]
+                { name: "Feed", link: "/" },
+                { name: "Post", link: "/post" },
+                ]
                 .map((item, index) => (
                     <a key={index} href={item.link} className="text-white p-2 hover:bg-blue-900">
                         {item.name}
