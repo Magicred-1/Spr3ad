@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { useUserWallets } from "@dynamic-labs/sdk-react-core";
 import Onboarding from "@/components/onboarding";
 import Spline from '@splinetool/react-spline';
-import Header from "@/components/layout-components/Header";
 import Footer from "@/components/layout-components/Footer";
 
 function AppHomePage() {

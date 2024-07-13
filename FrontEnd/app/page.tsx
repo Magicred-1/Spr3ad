@@ -1,7 +1,6 @@
 "use client";
 
 import Spline from '@splinetool/react-spline';
-import Header from "@/components/layout-components/Header";
 import Footer from "@/components/layout-components/Footer";
 import {
   BentoGrid,
