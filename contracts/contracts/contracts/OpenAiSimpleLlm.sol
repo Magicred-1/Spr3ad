@@ -3,6 +3,10 @@ pragma solidity ^0.8.13;
 
 import "./interfaces/IOracle.sol";
 
+interface Spread {
+    function setTagsAndSendInboxes(uint256 runId, string[] calldata tags) external;
+}
+
 contract OpenAiSimpleLLM {
     address private oracleAddress; // use latest: https://docs.galadriel.com/oracle-address
     IOracle.Message public message;
@@ -79,6 +83,9 @@ contract OpenAiSimpleLLM {
             responses[runId] = _errorMessage;
         } else {
             responses[runId] = _response.content;
+            string[] memory tags = getResponse(runId);
+            Spread spread = Spread(0xBa6F3e72A5Eb4474cf66E4Db09CAbc5fE232131F);
+            spread.setTagsAndSendInboxes(runId, tags);
         }
     }
 
