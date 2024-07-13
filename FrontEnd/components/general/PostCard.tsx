@@ -23,6 +23,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, changeActiveCard }) =>
     }
 
     const onSwipe = (direction: string) => {
+        console.log('You swiped: ' + direction)
         if (direction === 'right') {
             handleLike()
             return
@@ -37,7 +38,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, changeActiveCard }) =>
     return (
         <TinderCard
 
-            className="absolute top-0 text-white shadow-inner border border-white/40 
+            className="absolute overflow-hidden top-0 text-white shadow-inner border border-white/40 
 bg-black bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-50
 
               w-full h-full rounded-xl py-4 px-2"
@@ -45,8 +46,16 @@ bg-black bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-50
             onCardLeftScreen={changeActiveCard}
             preventSwipe={['up', 'down']}
         >
+            {
+                post.isSponsored && (
+                    <div className="absolute top-5 -left-10 -rotate-[40deg]  w-fit text-sm text-white font-bold bg-blue-600 py-2 px-12 rounded-sm transition-all">
+                        FEATURED
+                    </div>
+                )
+            }
 
             <div className="relative flex flex-col items-center justify-evenly h-full">
+
                 <div className="flex items-center gap-x-2">
                     <Image alt={userName} src={userImage} width={200} height={200} className="rounded-full w-10 h-10" />
                     <p>
@@ -66,7 +75,7 @@ bg-black bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-50
                     }
                 </div>
 
-                <div>
+                <div className="text-center gap-x-1">
                     {post.tags.map((tag, index) => (
                         <Badge variant={"secondary"} key={index}>
                             {tag}
@@ -84,7 +93,13 @@ bg-black bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-50
 
                 )
                 }
-
+                {
+                    post.isSponsored && (
+                        <p className="text-center px-2 py-1 text-white bg-blue-600 rounded-lg">
+                            5 ${post.sponsoredToken} to earn
+                        </p>
+                    )
+                }
             </div>
         </TinderCard >
     )
