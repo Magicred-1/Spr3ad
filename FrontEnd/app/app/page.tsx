@@ -3,21 +3,27 @@ import { useState, useEffect } from "react";
 import { Post, mockedPosts } from "@/types/Post";
 import { PostCard } from "@/components/general/PostCard";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
-import { usePublicClient, useSendTransaction, useWriteContract } from "wagmi";
+import {
+  usePublicClient,
+  useReadContract,
+  useSendTransaction,
+  useWriteContract,
+} from "wagmi";
 import { parseEther } from "viem";
 import { Button } from "@/components/ui/button";
 import { useUserWallets } from "@dynamic-labs/sdk-react-core";
 import Onboarding from "@/components/onboarding";
-import { getContract, usdcABI } from "@/lib/utils";
+import { getContract, spreadABI, usdcABI } from "@/lib/utils";
 import Spline from "@splinetool/react-spline";
 import Header from "@/components/layout-components/Header";
 import Footer from "@/components/layout-components/Footer";
 
 function AppHomePage() {
-  const [userSetup, setUserSetup] = useState(true); // todo: change to false
+  const [userSetup, setUserSetup] = useState(false); // todo: change to false
   const userWallets = useUserWallets();
   const publicClient = usePublicClient();
   const { writeContract } = useWriteContract();
+
   const [posts, setPosts] = useState<Post[]>([]);
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   useEffect(() => {
@@ -35,9 +41,19 @@ function AppHomePage() {
     setActiveCardIndex((prevIndex) => prevIndex + 1);
   };
 
-  const checkIfUserSetup = () => {
+  const checkIfUserSetup = async () => {
+    console.log("checking...");
+    if (userWallets.length === 0) return;
     const address = userWallets[0].address;
-    setUserSetup(true);
+    const id = await publicClient?.getChainId()!;
+    const contractAddress = getContract("spread", id);
+    const result = await publicClient?.readContract({
+      abi: spreadABI,
+      address: contractAddress,
+      functionName: "userToTags",
+      args: [address, 0],
+    });
+    console.log(JSON.stringify(data));
   };
 
   const mintUSDC = async () => {
@@ -50,6 +66,10 @@ function AppHomePage() {
       args: [userWallets[0].address, 2 * 10 ** 18],
     });
   };
+
+  useEffect(() => {
+    checkIfUserSetup();
+  }, [userWallets]);
 
   return (
     <>

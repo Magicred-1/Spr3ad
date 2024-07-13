@@ -33,7 +33,7 @@ const galadriel = {
   },
 } as const satisfies Chain;
 
-const config = createConfig({
+export const config = createConfig({
   chains: [
     mainnet,
     galadriel,
