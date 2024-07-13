@@ -4,6 +4,7 @@ import TinderCard from 'react-tinder-card'
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import { getImageForUser, getNameForUser } from "../utils/getUserData"
 import { BlockscoutTx } from "./BlockscoutTx"
+import { Badge } from "../ui/badge"
 interface PostCardProps {
     post: Post,
     changeActiveCard: () => void
@@ -12,15 +13,15 @@ interface PostCardProps {
 
 
 export const PostCard: React.FC<PostCardProps> = ({ post, changeActiveCard }) => {
-   
+
     const handleLike = () => {
         console.log('like')
     }
-    
+
     const handleSkip = () => {
         console.log('skip')
     }
-    
+
     const onSwipe = (direction: string) => {
         if (direction === 'right') {
             handleLike()
@@ -35,7 +36,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, changeActiveCard }) =>
     const userImage = getImageForUser(post.user)
     return (
         <TinderCard
-        
+
             className="absolute top-0 text-white shadow-inner border border-white/40 
 bg-black bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-50
 
@@ -67,9 +68,9 @@ bg-black bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-50
 
                 <div>
                     {post.tags.map((tag, index) => (
-                        <span key={index} className="bg-white text-blue-950 rounded-md px-2 py-1 mx-1">
+                        <Badge variant={"secondary"} key={index}>
                             {tag}
-                        </span>
+                        </Badge>
                     ))}
                 </div>
                 {post.mediaUrl && (
@@ -85,6 +86,6 @@ bg-black bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-50
                 }
 
             </div>
-        </TinderCard>
+        </TinderCard >
     )
 }

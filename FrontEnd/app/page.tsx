@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 import Spline from '@splinetool/react-spline';
 import Header from "@/components/layout-components/Header";
@@ -10,7 +10,6 @@ import {
   GRID_STYLES,
 } from "@/components/ui/bento-grid-many";
 import { cn } from "@/lib/utils";
-import { Button } from '@/components/ui/button';
 import Illustration1 from "@/public/illustration1.png";
 import Illustration2 from "@/public/illustration2.png";
 import Illustration3 from "@/public/illustration3.png";
