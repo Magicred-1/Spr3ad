@@ -7,7 +7,7 @@ import { Button } from "./ui/button";
 import { TAGS, shuffleTags } from "./utils/tags";
 import { useEffect, useState } from "react";
 
-function Onboarding() {
+function Onboarding({ refresh }: { refresh: Function }) {
   const [userTags, setUserTags] = useState<
     {
       name: string;
@@ -98,10 +98,12 @@ function Onboarding() {
 
   const setup = () => {
     //TODO
+    // setup
+    refresh();
   };
 
   return (
-    <div className="mx-auto text-center flex flex-col gap-10">
+    <div className="mx-auto text-center flex flex-col gap-10 text-white">
       <h1 className="text-3xl font-bold">Get Started</h1>
       <div className="link-wallet-container">
         <Button
@@ -112,7 +114,11 @@ function Onboarding() {
           Link New Wallet
         </Button>
       </div>
-      <Button className="w-64 mx-auto" onClick={setup}>
+      <Button
+        className="w-64 mx-auto"
+        onClick={setup}
+        disabled={userWallets.length === 0}
+      >
         Enter Spread
       </Button>
       {userTags.length > 0 && (

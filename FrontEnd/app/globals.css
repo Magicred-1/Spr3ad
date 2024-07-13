@@ -92,10 +92,18 @@
   /* Hide scrollbar for Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
       display: none;
-  }
+}
  /* Hide scrollbar for IE, Edge and Firefox */
   .no-scrollbar {
       -ms-overflow-style: none;  /* IE and Edge */
       scrollbar-width: none;  /* Firefox */
 }
+}
+
+.card-color {
+  background-color: rgba(6, 71, 137, 0.51);
+}
+
+.menu-open-padding {
+  padding-top: 16px; /* Adjust the value as needed */
 }
