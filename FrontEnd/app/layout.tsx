@@ -1,14 +1,14 @@
 import DynamicWagmiProvider from "@/lib/utils/DynamicWagmiProvider";
 import "./globals.css";
-import { lexend } from "@/components/utils/const"
+import { lexend } from "@/components/utils/const";
 
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Spr3ad',
-  description: 'Spr3ad is a decentralized social media platform powered by the AI.',
-}
- 
+  title: "Spr3ad",
+  description:
+    "Spr3ad is a decentralized social media platform powered by the AI.",
+};
 
 export default function RootLayout({
   children,
