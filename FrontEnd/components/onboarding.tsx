@@ -115,7 +115,7 @@ function Onboarding({ refresh }: { refresh: Function }) {
 
   const setup = async () => {
     await setupUser();
-    refresh();
+    refresh(true);
   };
 
   return (

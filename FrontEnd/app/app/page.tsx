@@ -41,19 +41,23 @@ function AppHomePage() {
     setActiveCardIndex((prevIndex) => prevIndex + 1);
   };
 
-  const checkIfUserSetup = async () => {
-    console.log("checking...");
+  const checkIfUserSetup = async (refresh?: boolean) => {
     if (userWallets.length === 0) return;
+    if (refresh) {
+      setTimeout(() => {
+        setUserSetup(true);
+        localStorage.setItem("user", "true");
+      }, 3000);
+    }
     const address = userWallets[0].address;
     const id = await publicClient?.getChainId()!;
     const contractAddress = getContract("spread", id);
-    const result = await publicClient?.readContract({
+    const res = await publicClient!.readContract({
       abi: spreadABI,
       address: contractAddress,
       functionName: "userToTags",
       args: [address, 0],
     });
-    console.log(JSON.stringify(data));
   };
 
   const mintUSDC = async () => {
@@ -69,6 +73,9 @@ function AppHomePage() {
 
   useEffect(() => {
     checkIfUserSetup();
+    if (localStorage.getItem("user") === "true") {
+      setUserSetup(true);
+    }
   }, [userWallets]);
 
   return (
