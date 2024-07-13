@@ -1,6 +1,6 @@
 import DynamicWagmiProvider from "@/lib/utils/DynamicWagmiProvider";
 import "./globals.css";
-import "animate.css/animate.compat.css"
+
 import { lexend } from "@/components/utils/const";
 import Header from "@/components/layout-components/Header";
 import Footer from "@/components/layout-components/Footer";
