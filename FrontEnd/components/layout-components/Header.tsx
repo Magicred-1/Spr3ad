@@ -6,7 +6,7 @@ import {
   } from "@dynamic-labs/sdk-react-core";
   
 function Header() {
-    return (<div className="bg-blue-950 flex justify-around items-center w-full">
+    return (<div className="bg-blue-950 flex justify-around items-center w-full py-2">
         {/* <Logo /> */}
         <div className="flex items-center">
             {[
@@ -14,7 +14,7 @@ function Header() {
                 { name: "Post", link: "/post" },
                 ]
                 .map((item, index) => (
-                    <a key={index} href={item.link} className="text-white p-2 hover:bg-blue-900">
+                    <a key={index} href={item.link} className="text-white p-2 hover:bg-blue-900 text-xl">
                         {item.name}
                     </a>
                 ))}
