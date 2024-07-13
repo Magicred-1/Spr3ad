@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import Logo from "@/components/general/Logo";
 
 function HeaderSimple() {
-    return (<div className="bg-blue-950 flex justify-around items-center">
+    return (<div className="bg-blue-950 flex justify-around items-center w-full">
         <Logo />
         <Button>Sign In</Button>
     </div>);
