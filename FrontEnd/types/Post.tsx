@@ -21,7 +21,7 @@ export const mockedPosts: Post[] = [
             id: "1",
             name: "user1",
             ens: "user1.eth",
-            address: "0x123"
+            address: "0x123",
         },
         txHash: "0x123",
         chainId: 1,
@@ -35,7 +35,7 @@ export const mockedPosts: Post[] = [
             id: "1",
             name: "user1",
             ens: "user1.eth",
-            address: "0x123"
+            address: "0x123",
         },
         txHash: "0x123",
         chainId: 1,
@@ -48,7 +48,7 @@ export const mockedPosts: Post[] = [
             id: "1",
             name: "user1",
             ens: "user1.eth",
-            address: "0x123"
+            address: "0x123",
         },
         txHash: "0x123",
         chainId: 1,
