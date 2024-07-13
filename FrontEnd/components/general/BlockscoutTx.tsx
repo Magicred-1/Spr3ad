@@ -21,7 +21,7 @@ export const BlockscoutTx: React.FC<BlockscoutTxProps> = ({ txHash, chainId }) =
                 href={`${getBlockscoutBaseURL(chainId)}/tx/${txHash}`}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center gap-x-1 pressable card-link text-black text-xs rounded-md border border-black px-2 py-1"
+                className="flex items-center justify-center gap-x-1 pressable card-link bg-white text-xs rounded-md border text-blue-950 px-2 py-1"
             >
                  
                 <p>Open in Blockscout</p>

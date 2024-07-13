@@ -107,3 +107,7 @@
 .menu-open-padding {
   padding-top: 16px; /* Adjust the value as needed */
 }
+
+.text-shadow {
+  text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+}

@@ -6,54 +6,59 @@ import { getImageForUser, getNameForUser } from "../utils/getUserData"
 import { BlockscoutTx } from "./BlockscoutTx"
 interface PostCardProps {
     post: Post,
-    onCardLeftScreen: () => void
+    changeActiveCard: () => void
 }
 
-const handleLike = () => {
-    console.log('like')
-}
 
-const handleSkip = () => {
-    console.log('skip')
-}
 
-const onSwipe = (direction: string) => {
-    if (direction === 'right') {
-        handleLike()
-        return
+export const PostCard: React.FC<PostCardProps> = ({ post, changeActiveCard }) => {
+   
+    const handleLike = () => {
+        console.log('like')
     }
-    else if (direction === 'left') {
-        handleSkip()
-        return
+    
+    const handleSkip = () => {
+        console.log('skip')
     }
-}
-
-export const PostCard: React.FC<PostCardProps> = ({ post, onCardLeftScreen }) => {
+    
+    const onSwipe = (direction: string) => {
+        if (direction === 'right') {
+            handleLike()
+            return
+        }
+        else if (direction === 'left') {
+            handleSkip()
+            return
+        }
+    }
     const userName = getNameForUser(post.user)
     const userImage = getImageForUser(post.user)
     return (
         <TinderCard
         
-            onCardLeftScreen={onCardLeftScreen}
-            className="absolute top-0 bg-gray-200 w-full h-full rounded-xl shadow-xl py-4 px-2"
+            className="absolute top-0 text-white shadow-inner border border-white/40 
+bg-black bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-50
+
+              w-full h-full rounded-xl py-4 px-2"
             onSwipe={onSwipe}
+            onCardLeftScreen={changeActiveCard}
             preventSwipe={['up', 'down']}
         >
 
             <div className="relative flex flex-col items-center justify-evenly h-full">
-                <div className="flex items-center bg-blur gap-x-2">
+                <div className="flex items-center gap-x-2">
                     <Image alt={userName} src={userImage} width={200} height={200} className="rounded-full w-10 h-10" />
                     <p>
                         {userName}
                     </p>
                 </div>
-                <div className="w-full h-48 rounded-xl flex justify-center items-center">
+                <div className="w-full h-48 rounded-xl flex justify-center items-center ">
                     {
                         post.mediaUrl
                             ? (
                                 <Image className="rounded-xl w-full h-48 object-cover" alt={post.description} src={post.mediaUrl} width={300} height={300} />
                             ) : (
-                                <p className="text-center">
+                                <p className="text-center text-shadow">
                                     {post.description}
                                 </p>
                             )
@@ -62,7 +67,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, onCardLeftScreen }) =>
 
                 <div>
                     {post.tags.map((tag, index) => (
-                        <span key={index} className="text-white bg-blue-950 rounded-md px-2 py-1 mx-1">
+                        <span key={index} className="bg-white text-blue-950 rounded-md px-2 py-1 mx-1">
                             {tag}
                         </span>
                     ))}

@@ -1,5 +1,6 @@
 import DynamicWagmiProvider from "@/lib/utils/DynamicWagmiProvider";
 import "./globals.css";
+import "animate.css/animate.compat.css"
 import { lexend } from "@/components/utils/const";
 import Header from "@/components/layout-components/Header";
 import Footer from "@/components/layout-components/Footer";
@@ -25,11 +26,11 @@ export default function RootLayout({
     <html lang="en">
       <DynamicWagmiProvider>
         <body className={`flex flex-col ${lexend.className}`}>
-        <Header />
-            <div className="flex-1 container">
-                {children}
-            </div>
-            <Footer />
+          <Header />
+          <div className="flex-1 container items-center justify-center ">
+            {children}
+          </div>
+          <Footer />
         </body>
       </DynamicWagmiProvider>
     </html>
