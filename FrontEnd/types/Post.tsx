@@ -26,7 +26,8 @@ export const mockedPosts: Post[] = [
   },
   {
     title: "Post 2",
-    description: "Description 2",
+    description: "Hey anon, this is a post from user1, I hope you like it! :)",
+    mediaUrl: "https://via.placeholder.com/150",
     tags: ["tag1", "tag2"],
     user: {
       id: "1",

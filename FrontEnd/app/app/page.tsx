@@ -46,14 +46,14 @@ function AppHomePage() {
             ))}
             <p>No more posts</p>
           </div>
-          <div className="w-full flex items-center justify-between mt-4">
-            <div>
+          <div className="w-full flex items-center justify-between mt-4 text-white">
+            <div className="flex flex-col justify-center items-start">
               <ArrowLeftIcon size={32} />
-              <p>Skip</p>
+              <p className="">Swipe to Skip</p>
             </div>
-            <div>
+            <div className="flex flex-col justify-center items-end">
               <ArrowRightIcon size={32} />
-              <p>Like</p>
+              <p className="">Swipe to Like</p>
             </div>
           </div>
         </div>
