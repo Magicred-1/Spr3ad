@@ -27,8 +27,8 @@ function Header() {
             <Logo />
             <div className="hidden md:flex items-center">
                 {[
-                    { name: "Feed", link: "/" },
-                    { name: "Post", link: "/post" },
+                    { name: "Discover", link: "/" },
+                    { name: "Create Cards", link: "/post" },
                     { name: "Profile", link: "/profile" },
                 ].map((item, index) => (
                     <a key={index} href={item.link} className="text-white p-2 hover:bg-blue-900 text-xl">
