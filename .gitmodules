@@ -4,3 +4,6 @@
 [submodule "Solidity/lib/openzeppelin-contracts"]
 	path = Solidity/lib/openzeppelin-contracts
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts
+[submodule "Solidity/lib/chainlink"]
+	path = Solidity/lib/chainlink
+	url = https://github.com/smartcontractkit/chainlink
