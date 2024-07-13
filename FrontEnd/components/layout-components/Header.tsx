@@ -27,7 +27,7 @@ function Header() {
             <Logo />
             <div className="hidden md:flex items-center">
                 {[
-                    { name: "Discover", link: "/" },
+                    { name: "Discover", link: "/app" },
                     { name: "Create Cards", link: "/post" },
                     { name: "Profile", link: "/profile" },
                 ].map((item, index) => (
