@@ -25,6 +25,45 @@ function Onboarding() {
     );
   };
 
+  const getIfApeCoinHolder = async (address: string) => {
+    try {
+      const response = await fetch(
+        "https://gateway.thegraph.com/api/deployments/id/Qmd55TD7tQYdKJSb9hFhGkPZdBeXNzRe1nR89jpj98aU2m",
+        {
+          headers: {
+            accept: "application/json, multipart/mixed",
+            "accept-language": "en-US,en;q=0.9",
+            authorization: "Bearer 944b560e76f53abf0739468966998887",
+            "cache-control": "no-cache",
+            "content-type": "application/json",
+            pragma: "no-cache",
+            "sec-ch-ua":
+              '"Not A(Brand";v="99", "Google Chrome";v="121", "Chromium";v="121"',
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": '"Linux"',
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-site",
+            Referer: "https://thegraph.com/",
+            "Referrer-Policy": "strict-origin-when-cross-origin",
+          },
+          body:
+            '{"query":"{\\n  holders(where:{address:\\"' +
+            address +
+            '\\"}) {\\n    id\\n    address\\n    balance\\n    token {\\n      id\\n    }\\n  }\\n}"}',
+          method: "POST",
+        }
+      );
+
+      const data = await response.json();
+
+      return parseFloat(data.data.holders[0].balance) > 0 || false;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  };
+
   const getUserTags = () => {
     if (!isThereNewWallets()) {
       return;
@@ -42,6 +81,7 @@ function Onboarding() {
     }
 
     const combinedTags = [...userTags, ...newTags];
+    getIfApeCoinHolder(userWallets[0].address);
     const uniqueTags = Array.from(new Set(combinedTags.map((tag) => tag.name)))
       .map((name) => combinedTags.find((tag) => tag.name === name))
       .filter(
