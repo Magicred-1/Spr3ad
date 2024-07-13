@@ -7,15 +7,18 @@ import PostComponent from "@/components/Post/Post";
 import ProfileBanner from "@/components/Profile/ProfileBanner";
 import { Badge } from "@/components/ui/badge";
 import { mockedPosts } from "@/types/Post";
+import WorldcoinButton from "@/components/WorldcoinButton";
+
 
 const ProfilePage = () => {
+
     return (
         <>
             <Header />
             <div className="flex-1 container flex flex-col gap-1">
-                <div>
+                <div className="flex justify-between items-center">
                     <h1 className="text-white">Profile</h1>
-                    <Badge>Verified</Badge>
+                    <WorldcoinButton />
                 </div>
                 <ProfileBanner />
                 <h1>Your Posts</h1>
