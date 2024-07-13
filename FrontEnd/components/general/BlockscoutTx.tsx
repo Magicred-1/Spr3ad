@@ -4,8 +4,17 @@ import Link from "next/link"
 // https://docs.blockscout.com/about/projects
 const getBlockscoutBaseURL = (chainId: number) => {
     switch (chainId) {
-        case 1:
+        case 1: // eth
             return "https://eth.blockscout.com"
+        case 696969://galadriel
+         return 'https://explorer.galadriel.com'
+         case 421614: // arbi sepolia
+         return 'https://sepolia-explorer.arbitrum.io'
+         case 534351: // scroll sepolia
+         return 'https://sepolia.scrollscan.com'
+         case 84532: // base sepolia
+         return 'https://base-sepolia.blockscout.com'
+         
     }
 }
 

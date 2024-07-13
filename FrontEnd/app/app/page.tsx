@@ -17,7 +17,7 @@ function AppHomePage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   useEffect(() => {
-    setPosts(dataBy.scroll.posts.slice().reverse());
+    setPosts(dataBy.general.posts.slice().reverse());
   }, []);
   const { data: hash, sendTransaction } = useSendTransaction();
 
