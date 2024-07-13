@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Post,  dataBy } from "@/types/Post";
+import { Post, dataBy } from "@/types/Post";
 import { PostCard } from "@/components/general/PostCard";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import { useSendTransaction } from "wagmi";
@@ -39,7 +39,6 @@ function AppHomePage() {
 
   return (
     <>
-      <Header />
       <div className="relative h-full flex items-center justify-center">
         <Spline
           scene="https://prod.spline.design/GzQFnTdbQCeOpknA/scene.splinecode"
@@ -66,9 +65,9 @@ function AppHomePage() {
               </div>
               <div className="flex flex-col justify-center items-end">
                 <ArrowRightIcon size={32} />
-                <p className={`${posts[activeCardIndex]?.isSponsored && "bg-blue-600 text-white px-2 py-1 rounded-lg"}`}>Swipe to 
+                <p className={`${posts[activeCardIndex]?.isSponsored && "bg-blue-600 text-white px-2 py-1 rounded-lg"}`}>Swipe to
 
-                  {posts[activeCardIndex]?.isSponsored ? " Earn" : " Spread"} 
+                  {posts[activeCardIndex]?.isSponsored ? " Earn" : " Spread"}
                 </p>
               </div>
             </div>
