@@ -8,9 +8,11 @@ import { TAGS, shuffleTags } from "./utils/tags";
 import { useEffect, useState } from "react";
 import Spline from "@splinetool/react-spline";
 import { usePublicClient, useWriteContract } from "wagmi";
-import { getContract, spreadABI } from "@/lib/utils";
+import { getContract, spreadABI, user_tags } from "@/lib/utils";
+import { Badge } from "./ui/badge";
 
 function Onboarding({ refresh }: { refresh: Function }) {
+  const [tags, setTags] = useState(user_tags);
   const [userTags, setUserTags] = useState<
     {
       name: string;
@@ -144,7 +146,7 @@ function Onboarding({ refresh }: { refresh: Function }) {
       {userTags.length > 0 && (
         <div>
           <h2 className="text-2xl font-bold mb-3">
-            We Found {userTags.length} Tags for You
+            We Found {userTags.length + tags.length} Tags for You
           </h2>
           <ul className="flex gap-5 w-10/12 justify-center mx-auto flex-wrap">
             {userTags.map((tag) => (
@@ -162,6 +164,12 @@ function Onboarding({ refresh }: { refresh: Function }) {
               </li>
             ))}
           </ul>
+          <p>Other Tags</p>
+          {tags.map((tag, index) => (
+            <Badge variant={"secondary"} key={index}>
+              {tag}
+            </Badge>
+          ))}
         </div>
       )}
       {userWallets.length > 0 && (
