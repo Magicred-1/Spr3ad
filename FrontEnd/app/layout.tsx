@@ -5,21 +5,14 @@ import { lexend } from "@/components/utils/const";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-<<<<<<< HEAD
   title: "Spr3ad",
   description:
     "Spr3ad is a decentralized social media platform powered by the AI.",
-};
-=======
-  title: 'Spr3ad',
-  description: 'Spr3ad is a decentralized social media platform powered by the AI.',
   icons: {
     icon: "/defaultProfile.jpg",
     apple: "/defaultProfile.jpg",
   },
-}
- 
->>>>>>> origin/main
+};
 
 export default function RootLayout({
   children,
