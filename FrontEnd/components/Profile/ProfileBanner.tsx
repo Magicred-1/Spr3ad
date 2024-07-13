@@ -21,22 +21,25 @@ function ProfileBanner() {
     const shrinkedWallet = shrinkString(userWallet?.address || '', 8)
 
     return (
-        <div className="flex flex-col justify-center items-center bg-blue-900 ">
+        <div className="flex flex-col justify-center items-center bg-blue-900 rounded-lg ">
 
             {
-                isLogged ? (<div className="flex items-center gap-2">
-                    
+                isLogged ? (<div className="flex items-center gap-4 p-2">
+                    <Avatar className="w-20 h-20">
+                        <AvatarFallback>0x</AvatarFallback>
+                    </Avatar>
                     <div className="flex flex-col justify-center gap-2">
+
                         <h1 className="text-3xl font-bold text-white">{userProfile?.username || userProfile?.email || shrinkedWallet || 'unknow'}</h1>
                         <div className="flex gap-2 text-white">
                             <p className="text-lg text-white">{shrinkedWallet}</p>
                             <Copy />
                         </div>
                     </div>
-                </div>) : 
-                (
-                    <h3>You are not Logged in</h3>
-                )
+                </div>) :
+                    (
+                        <h3>You are not Logged in</h3>
+                    )
             }
         </div>);
 }
