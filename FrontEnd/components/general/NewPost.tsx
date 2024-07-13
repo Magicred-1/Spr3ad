@@ -8,15 +8,20 @@ import { User } from "@/types/User"
 import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { TAGS } from "../utils/tags"
-import Select, { MultiValue} from 'react-select'
+import Select, { MultiValue } from 'react-select'
 import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "../ui/button"
+import FileInput from "../FileInput"
+import lighthouse from '@lighthouse-web3/sdk'
+
 
 interface NewPostProps {
 }
 
 export const NewPost: React.FC<NewPostProps> = () => {
     const [useGaladriel, setUseGaladriel] = useState(true)
+    const [files, setFiles] = useState<File[]>([])
+    const [ipfsHashes, setIpfsHashes] = useState<string[]>([])
     const [selectedTags, setSelectedTags] = useState<string[]>([])
     const [image, setImage] = useState<string | null>(null)
     const [text, setText] = useState<string>("")
@@ -38,16 +43,27 @@ export const NewPost: React.FC<NewPostProps> = () => {
     )
 
     const sendPost = async () => {
-        console.log({
-            step:'newPost',
+        const API_KEY = process.env.NEXT_PUBLIC_LIGHTHOUSE_STORAGE_KEY
+        if (!API_KEY) {
+            throw new Error('API Key not found')
+        }
+
+        const postObj = {
+            step: 'newPost',
             text,
-            image,
+            images: ipfsHashes,
             selectedTags,
             useGaladriel
-        })
+        }
+
+        const response = await lighthouse.uploadText(JSON.stringify(postObj), API_KEY)
+        console.log("🚀 ~ sendPost ~ response:", response)
+        console.log(postObj)
+        console.log('Visit at https://gateway.lighthouse.storage/ipfs/' + response.data.Hash)
     }
 
-    const updateTags = (values:MultiValue<{
+
+    const updateTags = (values: MultiValue<{
         value: string;
         label: string;
     }>) => {
@@ -67,7 +83,7 @@ export const NewPost: React.FC<NewPostProps> = () => {
                         {userName}
                     </p>
                 </div>
-                <div className="w-full h-48 rounded-xl flex justify-center items-center">
+                <div className="w-full h-48 rounded-xl flex justify-center items-center flex-col">
                     {/* { // display image when available
                         image
                             ? (
@@ -79,39 +95,53 @@ export const NewPost: React.FC<NewPostProps> = () => {
                             )
                     } */}
                     <p>Add Image</p>
+                    <FileInput setFiles={setFiles} setIpfsHashes={setIpfsHashes} />
+                </div>
+                <div className="flex gap-2 p-2">
+                    {files.map((file, index) => (
+                        <Image key={index} style={{
+                            objectFit: 'cover'
+                        }}
+                            alt="userImage"
+                            src={URL.createObjectURL(file)}
+                            width={200}
+                            height={200}
+                            className="rounded-xl w-10 h-10" />
+                    ))
+                    }
                 </div>
                 <div className="w-full flex flex-col">
-                    <Select  
-                    onChange={(newValues)=> {
-                        updateTags(newValues)
-                    }}  
-                    placeholder={"Select tags"} isMulti className="w-full text-xs" options={options} />
+                    <Select
+                        onChange={(newValues) => {
+                            updateTags(newValues)
+                        }}
+                        placeholder={"Select tags"} isMulti className="w-full text-xs" options={options} />
                     <div className="flex w-full backdrop:flex items-center space-x-2 px-2 mt-2">
-                    <Checkbox 
-                    onCheckedChange={(e) => {
-                        setUseGaladriel(e as boolean)
-                    }}
-                    onChange={(e) => {
-                        console.log(e.target)
-                    }}
-                    id="terms" />
-                    <label
-                        htmlFor="terms"
-                        className="text-xs leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                        Generate AI tags with Galadriel 
-                    </label>
+                        <Checkbox
+                            onCheckedChange={(e) => {
+                                setUseGaladriel(e as boolean)
+                            }}
+                            onChange={(e) => {
+                                console.log(e.target)
+                            }}
+                            id="terms" />
+                        <label
+                            htmlFor="terms"
+                            className="text-xs leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
+                            Generate AI tags with Galadriel
+                        </label>
+                    </div>
+                    <textarea
+                        onChange={(e) => setText(e.target.value)}
+                        value={text}
+                        className="w-full h-24 rounded-xl p-2 my-2 focus:outline-none focus:ring-0" placeholder="Add text" />
                 </div>
-                <textarea
-                onChange={(e) => setText(e.target.value)}
-                value={text}
-                className="w-full h-24 rounded-xl p-2 my-2 focus:outline-none focus:ring-0" placeholder="Add text" />
-                </div>
-                <Button 
-                onClick={()=> {
-                    sendPost()
-                }}
-                className="w-1/2">Post</Button>
+                <Button
+                    onClick={() => {
+                        sendPost()
+                    }}
+                    className="w-1/2">Post</Button>
             </div>
         </div>
     )
