@@ -3,6 +3,7 @@ import "./globals.css";
 import { lexend } from "@/components/utils/const";
 import Footer from "@/components/layout-components/Footer";
 import { Metadata } from "next";
+import Header from "../components/layout-components/Header";
 
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <DynamicWagmiProvider>
         <body className={`flex flex-col ${lexend.className}`}>
+          <Header />
           <div className="flex-1 container items-center justify-center ">
             {children}
           </div>

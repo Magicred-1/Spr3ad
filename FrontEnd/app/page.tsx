@@ -1,7 +1,6 @@
 "use client";
 
 import Spline from '@splinetool/react-spline';
-import Header from "@/components/layout-components/Header";
 import Footer from "@/components/layout-components/Footer";
 import {
   BentoGrid,
@@ -32,7 +31,6 @@ export default function Home() {
   const router = useRouter();
   return (
     <>
-      <Header />
       <div className="relative w-full h-screen">
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-10 tracking-wider">
           <h1 className="text-6xl font-bold">

@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Post,  dataBy } from "@/types/Post";
+import { Post, dataBy } from "@/types/Post";
 import { PostCard } from "@/components/general/PostCard";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import {
@@ -14,8 +14,8 @@ import { Button } from "@/components/ui/button";
 import { useUserWallets } from "@dynamic-labs/sdk-react-core";
 import Onboarding from "@/components/onboarding";
 import { getContract, spreadABI, usdcABI } from "@/lib/utils";
-import Spline from "@splinetool/react-spline";
 import Header from "@/components/layout-components/Header";
+import Spline from "@splinetool/react-spline";
 import Footer from "@/components/layout-components/Footer";
 
 function AppHomePage() {
@@ -27,7 +27,7 @@ function AppHomePage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   useEffect(() => {
-    setPosts(dataBy.scroll.posts.slice().reverse());
+    setPosts(dataBy.general.posts.slice().reverse());
   }, []);
   const { data: hash, sendTransaction } = useSendTransaction();
 
@@ -80,7 +80,6 @@ function AppHomePage() {
 
   return (
     <>
-      <Header />
       <div className="relative h-full flex items-center justify-center">
         <Spline
           scene="https://prod.spline.design/GzQFnTdbQCeOpknA/scene.splinecode"
@@ -108,9 +107,14 @@ function AppHomePage() {
               </div>
               <div className="flex flex-col justify-center items-end">
                 <ArrowRightIcon size={32} />
-                <p className={`${posts[activeCardIndex]?.isSponsored && "bg-blue-600 text-white px-2 py-1 rounded-lg"}`}>Swipe to 
-
-                  {posts[activeCardIndex]?.isSponsored ? " Earn" : " Spread"} 
+                <p
+                  className={`${
+                    posts[activeCardIndex]?.isSponsored &&
+                    "bg-blue-600 text-white px-2 py-1 rounded-lg"
+                  }`}
+                >
+                  Swipe to
+                  {posts[activeCardIndex]?.isSponsored ? " Earn" : " Spread"}
                 </p>
               </div>
             </div>

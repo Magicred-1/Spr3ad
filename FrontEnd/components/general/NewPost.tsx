@@ -167,7 +167,7 @@ export const NewPost: React.FC<NewPostProps> = () => {
           <Textarea
             onChange={(e) => setText(e.target.value)}
             value={text}
-            className="bg-black w-full h-24 p-2 my-2 focus:outline-none focus:ring-0"
+            className="bg-black text-white w-full h-24 p-2 my-2 focus:outline-none focus:ring-0"
             placeholder="Add text"
           />
           <div className="flex w-full backdrop:flex items-center space-x-2 px-2 mt-2">
