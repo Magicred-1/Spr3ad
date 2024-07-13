@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Post, mockedPosts } from "@/types/Post";
+import { Post,  dataBy } from "@/types/Post";
 import { PostCard } from "@/components/general/PostCard";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import {
@@ -27,7 +27,7 @@ function AppHomePage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   useEffect(() => {
-    setPosts(mockedPosts.slice().reverse());
+    setPosts(dataBy.scroll.posts.slice().reverse());
   }, []);
   const { data: hash, sendTransaction } = useSendTransaction();
 
@@ -108,7 +108,10 @@ function AppHomePage() {
               </div>
               <div className="flex flex-col justify-center items-end">
                 <ArrowRightIcon size={32} />
-                <p className="">Swipe to Spread</p>
+                <p className={`${posts[activeCardIndex]?.isSponsored && "bg-blue-600 text-white px-2 py-1 rounded-lg"}`}>Swipe to 
+
+                  {posts[activeCardIndex]?.isSponsored ? " Earn" : " Spread"} 
+                </p>
               </div>
             </div>
           </div>

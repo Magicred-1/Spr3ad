@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import Logo from "@/components/general/Logo";
 import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
 import { Menu, X } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
 
 function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -27,8 +27,8 @@ function Header() {
             <Logo />
             <div className="hidden md:flex items-center">
                 {[
-                    { name: "Feed", link: "/" },
-                    { name: "Post", link: "/post" },
+                    { name: "Discover", link: "/app" },
+                    { name: "Create Cards", link: "/post" },
                     { name: "Profile", link: "/profile" },
                 ].map((item, index) => (
                     <a key={index} href={item.link} className="text-white p-2 hover:bg-blue-900 text-xl">
@@ -36,14 +36,19 @@ function Header() {
                     </a>
                 ))}
             </div>
-            <DynamicWidget />
+            <div className="hidden md:flex items-center">
+                <DynamicWidget />
+            </div>
             <div className="md:hidden flex items-center">
                 <Sheet open={menuOpen} onOpenChange={(opened: any) => { setMenuOpen(opened) }}>
-                    <SheetTrigger>
+                    <SheetTrigger asChild>
                         <button onClick={toggleMenu} className="text-white text-2xl focus:outline-none">
                             {menuOpen ? <X /> : <Menu />}
                         </button>
                     </SheetTrigger>
+                    <SheetHeader>
+                        <SheetTitle></SheetTitle>
+                    </SheetHeader>
                     <SheetContent className="bg-blue-950">
                         <div className="absolute top-16 left-0 w-full bg-blue-950 flex flex-col items-center md:hidden">
                             {[
@@ -55,6 +60,7 @@ function Header() {
                                     {item.name}
                                 </a>
                             ))}
+                            <DynamicWidget />
                         </div>
                     </SheetContent>
                 </Sheet>

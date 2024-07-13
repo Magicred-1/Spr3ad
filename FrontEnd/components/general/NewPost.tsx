@@ -143,7 +143,11 @@ export const NewPost: React.FC<NewPostProps> = () => {
             className="w-full text-xs "
             styles={{
               control: (state) => ({ ...state, backgroundColor: "black" }),
-              option: (state) => ({ ...state, backgroundColor: "black" }),
+              option: (state) => ({
+                ...state,
+                backgroundColor: "black",
+                color: "white",
+              }),
             }}
             options={options}
           />

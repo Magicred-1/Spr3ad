@@ -15,6 +15,8 @@ import Illustration2 from "@/public/illustration2.png";
 import Illustration3 from "@/public/illustration3.png";
 import Illustration4 from "@/public/illustration4.png";
 import { Heart, Earth, HandCoins, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 
 // Define the illustrations array
 const illustrations = [Illustration1, Illustration2, Illustration3, Illustration4];
@@ -27,6 +29,7 @@ const buttonTexts = [
 ];
 
 export default function Home() {
+  const router = useRouter();
   return (
     <>
       <Header />
@@ -36,6 +39,13 @@ export default function Home() {
             Make your content spread
           </h1>
           <p className="text-2xl mt-4">The new way to make your content viral in a decentralized flavour</p>
+          <Button
+            className="mt-8"
+            variant={"outline"}
+            onClick={() => {
+              router.push("/app");
+            }}
+          >Get Started</Button>
         </div>
         <Spline
           scene="https://prod.spline.design/GzQFnTdbQCeOpknA/scene.splinecode"
