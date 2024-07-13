@@ -1,3 +1,4 @@
+import { uploadFile } from '@/server/uploadContent';
 import { Copyright } from 'lucide-react';
 import Image from 'next/image';
 
