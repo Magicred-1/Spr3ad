@@ -7,18 +7,12 @@ import PostComponent from "@/components/Post/Post";
 import ProfileBanner from "@/components/Profile/ProfileBanner";
 import { Badge } from "@/components/ui/badge";
 import { mockedPosts } from "@/types/Post";
-import { mock } from "node:test";
-import { useState } from "react";
 
 const ProfilePage = () => {
-    const [files, setFiles] = useState<FileList>()
-
-
     return (
         <>
             <Header />
             <div className="flex-1 container flex flex-col gap-1">
-                <FileInput setFiles={setFiles} />
                 <div>
                     <h1 className="text-white">Profile</h1>
                     <Badge>Verified</Badge>

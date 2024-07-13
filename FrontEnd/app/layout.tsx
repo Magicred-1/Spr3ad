@@ -1,6 +1,9 @@
 import DynamicWagmiProvider from "@/lib/utils/DynamicWagmiProvider";
 import "./globals.css";
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 import { lexend } from "@/components/utils/const";
 import Header from "@/components/layout-components/Header";
 import Footer from "@/components/layout-components/Footer";
