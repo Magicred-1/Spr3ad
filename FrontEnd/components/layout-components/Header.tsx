@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Logo from "@/components/general/Logo";
+import WorldcoinButton from "../WorldcoinButton";
 import {
     DynamicWidget,
   } from "@dynamic-labs/sdk-react-core";
@@ -19,8 +20,7 @@ function Header() {
                 ))}
         </div>
         <DynamicWidget />
-
-    </div>);
-}
+                </div>
+    )}
 
 export default Header;
