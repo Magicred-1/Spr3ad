@@ -13,6 +13,7 @@ import {
   morphHolesky,
   rootstockTestnet,
   neonDevnet,
+  zircuitTestnet,
 } from "viem/chains";
 import { mergeNetworks } from "@dynamic-labs/sdk-react-core";
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
@@ -42,6 +43,7 @@ const config = createConfig({
     morphHolesky,
     rootstockTestnet,
     neonDevnet,
+    zircuitTestnet,
   ],
   multiInjectedProviderDiscovery: false,
   transports: {
@@ -53,6 +55,7 @@ const config = createConfig({
     [morphHolesky.id]: http(),
     [rootstockTestnet.id]: http(),
     [neonDevnet.id]: http(),
+    [zircuitTestnet.id]: http(),
   },
 });
 

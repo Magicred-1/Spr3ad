@@ -6,6 +6,7 @@ import Logo from "@/components/general/Logo";
 import WorldcoinButton from "../WorldcoinButton";
 import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
 import { Menu, X } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 
 function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -37,22 +38,42 @@ function Header() {
             </div>
             <DynamicWidget />
             <div className="md:hidden flex items-center">
-                <button onClick={toggleMenu} className="text-white text-2xl focus:outline-none">
-                    {menuOpen ? <X /> : <Menu />}
-                </button>
+                <Sheet open={menuOpen} onOpenChange={(opened) => { setMenuOpen(opened) }}>
+                    <SheetTrigger asChild>
+                        <button onClick={toggleMenu} className="text-white text-2xl focus:outline-none">
+                            {menuOpen ? <X /> : <Menu />}
+                        </button>
+                    </SheetTrigger>
+                    <SheetContent className="bg-blue-950">
+                        <div className="absolute top-16 left-0 w-full bg-blue-950 flex flex-col items-center md:hidden">
+                            {[
+                                { name: "Feed", link: "/" },
+                                { name: "Post", link: "/post" },
+                                { name: "Profile", link: "/profile" },
+                            ].map((item, index) => (
+                                <a key={index} href={item.link} className="text-white p-2 hover:bg-blue-900 text-xl w-full text-center">
+                                    {item.name}
+                                </a>
+                            ))}
+                        </div>
+                    </SheetContent>
+                </Sheet>
+
+
             </div>
-            {menuOpen && (
+            {/* {menuOpen && (
                 <div className="absolute top-16 left-0 w-full bg-blue-950 flex flex-col items-center md:hidden">
                     {[
                         { name: "Feed", link: "/" },
                         { name: "Post", link: "/post" },
+                        { name: "Profile", link: "/profile" },
                     ].map((item, index) => (
                         <a key={index} href={item.link} className="text-white p-2 hover:bg-blue-900 text-xl w-full text-center">
                             {item.name}
                         </a>
                     ))}
                 </div>
-            )}
+            )} */}
         </div>
     );
 }
