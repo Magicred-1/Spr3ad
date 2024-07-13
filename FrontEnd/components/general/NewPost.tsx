@@ -149,7 +149,6 @@ export const NewPost: React.FC<NewPostProps> = () => {
                         <FileInput setFiles={setFiles} setIpfsHashes={setIpfsHashes} />
                     </div>
                 </div>
-                <div className="flex gap-2 p-2"></div>
                 <div className="w-full flex flex-col">
                     <Input className="text-white" placeholder="Title" />
                 </div>
