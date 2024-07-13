@@ -8,6 +8,8 @@ export interface Post {
     user: User;
     txHash?: string;
     chainId?: number;
+    views?: number;
+    endorses?: number;
 }
 
 export const mockedPosts: Post[] = [

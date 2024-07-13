@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     apple: "/defaultProfile.jpg",
   },
 }
- 
+
 
 export default function RootLayout({
   children,
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <DynamicWagmiProvider>
-        <body className={`overflow-hidden w-full h-screen ${lexend.className}`}>
+        <body className={`overflow-auto w-full h-screen ${lexend.className}`}>
           {children}
         </body>
       </DynamicWagmiProvider>
