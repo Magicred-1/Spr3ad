@@ -23,12 +23,18 @@ import {
   CarouselPrevious,
 } from "../ui/carousel";
 import { usePublicClient, useWriteContract } from "wagmi";
-import { galadrielABI, getContract, spreadABI, testABI } from "@/lib/utils";
+import {
+  galadrielABI,
+  getContract,
+  spreadABI,
+  testABI,
+  user_tags,
+} from "@/lib/utils";
 
 interface NewPostProps {}
 
 export const NewPost: React.FC<NewPostProps> = () => {
-  const [tags, setTags] = useState(dataBy.general.tags);
+  const [tags, setTags] = useState(user_tags);
   const [useGaladriel, setUseGaladriel] = useState(true);
   const [files, setFiles] = useState<File[]>([]);
   const [ipfsHashes, setIpfsHashes] = useState<string[]>([]);

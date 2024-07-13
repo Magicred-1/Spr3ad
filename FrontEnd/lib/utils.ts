@@ -1,10 +1,15 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import { customEVMChains } from "./utils/DynamicWagmiProvider"
+import { dataBy } from "@/types/Post"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+export const user_tags = dataBy.general.tags
+export const user_posts = dataBy.general.posts
+
 
 // https://explorer.galadriel.com/address/0x68EC9556830AD097D661Df2557FBCeC166a0A075 -> EXPLORER POUR WATCH OPEN AI RESPONSE
 // THEGRAPH https://thegraph.com/explorer/subgraphs/EKYuDy59ZZvn82cJkpbtSWtkJJap5qDongmpNz3xcRZc?view=Query&chain=mainnet
