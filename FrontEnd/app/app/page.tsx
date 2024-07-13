@@ -10,7 +10,7 @@ import { useUserWallets } from "@dynamic-labs/sdk-react-core";
 import Onboarding from "@/components/onboarding";
 
 function AppHomePage() {
-  const [userSetup, setUserSetup] = useState(false);
+  const [userSetup, setUserSetup] = useState(true); // todo: change to false 
   const userWallets = useUserWallets();
   const [posts, setPosts] = useState<Post[]>([]);
 

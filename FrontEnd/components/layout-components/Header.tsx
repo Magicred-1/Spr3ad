@@ -23,7 +23,7 @@ function Header() {
     }, [menuOpen]);
 
     return (
-        <div className="bg-blue-950 flex justify-between items-center w-full py-2 px-8 rounded-lg">
+        <div className="bg-blue-950 flex justify-between items-center w-full py-2 px-8 rounded-b-lg mb-4">
             <Logo />
             <div className="hidden md:flex items-center">
                 {[
