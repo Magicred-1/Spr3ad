@@ -1,10 +1,9 @@
-import Image from "next/image";
-import { clx } from "@/lib/utils/clx/clx-merge";
-import Illustration1 from "@/public/illustration1.png";
-import Illustration2 from "@/public/illustration2.png";
-import Illustration3 from "@/public/illustration3.png";
-import Illustration4 from "@/public/illustration4.png";
+"use client";
 
+import Image, { StaticImageData } from "next/image";
+import { clx } from "@/lib/utils/clx/clx-merge";
+import { Button } from "./button";
+import { useRouter } from "next/navigation";
 // Define constants for different cell configurations
 export const CELLS_4 = [1, 2, 3, 4] as const;
 export const CELLS_5 = [1, 2, 3, 4, 5] as const;
@@ -14,30 +13,30 @@ export const CELLS_6 = [1, 2, 3, 4, 5, 6] as const;
 interface CellProps {
   title: string;
   description: string;
-  illustration: keyof typeof illustrations;
+  illustration: StaticImageData;
+  buttonText: { icon: JSX.Element; text: string };
 }
 
-// Define illustrations mapping
-const illustrations = {
-  Illustration1,
-  Illustration2,
-  Illustration3,
-  Illustration4,
-};
-
 // Define the Cell component with proper typings
-export const Cell = ({ title, description, illustration }: CellProps) => {
-  const illustrationSrc = illustrations[illustration];
+export const Cell = ({ title, description, illustration, buttonText }: CellProps) => {
+  const router = useRouter();
 
   return (
     <CellPattern>
       <div className="w-full">
-        <Image src={illustrationSrc} alt={title} layout="responsive" objectFit="contain" />
+        <Image src={illustration} alt={title} layout="responsive" objectFit="contain" />
       </div>
-      <div className="p-2">
+      {/* <div className="p-2">
         <h1 className="text-2xl font-bold">{title}</h1>
         <p className="text-lg">{description}</p>
-      </div>
+      </div> */}
+      <Button variant={"ghost"} className="w-full"
+        onClick={
+          () => router.push("/app")
+        }>
+        {buttonText.icon}
+        {buttonText.text}
+      </Button>
     </CellPattern>
   );
 };
@@ -52,4 +51,4 @@ export const CellPattern = clx.div(
 );
 
 // Define a constant for grid styles
-export const GRID_STYLES = "p-1 rounded-lg h-32";
+export const GRID_STYLES = "p-1 rounded-lg h-50";
