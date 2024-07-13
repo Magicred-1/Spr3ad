@@ -75,7 +75,7 @@ bg-black bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-50
                     }
                 </div>
 
-                <div className="text-center gap-x-1">
+                <div className="flex text-center gap-2">
                     {post.tags.map((tag, index) => (
                         <Badge variant={"secondary"} key={index}>
                             {tag}

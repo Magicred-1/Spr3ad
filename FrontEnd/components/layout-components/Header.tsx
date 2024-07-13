@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import Logo from "@/components/general/Logo";
 import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
 import { Menu, X } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "../ui/sheet";
 
 function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -41,11 +41,14 @@ function Header() {
             </div>
             <div className="md:hidden flex items-center">
                 <Sheet open={menuOpen} onOpenChange={(opened: any) => { setMenuOpen(opened) }}>
-                    <SheetTrigger>
+                    <SheetTrigger asChild>
                         <button onClick={toggleMenu} className="text-white text-2xl focus:outline-none">
                             {menuOpen ? <X /> : <Menu />}
                         </button>
                     </SheetTrigger>
+                    <SheetHeader>
+                        <SheetTitle></SheetTitle>
+                    </SheetHeader>
                     <SheetContent className="bg-blue-950">
                         <div className="absolute top-16 left-0 w-full bg-blue-950 flex flex-col items-center md:hidden">
                             {[
