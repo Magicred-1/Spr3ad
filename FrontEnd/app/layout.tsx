@@ -1,8 +1,9 @@
 import DynamicWagmiProvider from "@/lib/utils/DynamicWagmiProvider";
 import "./globals.css";
 import { lexend } from "@/components/utils/const";
-
+import Footer from "@/components/layout-components/Footer";
 import { Metadata } from "next";
+
 
 export const metadata: Metadata = {
   title: "Spr3ad",
@@ -23,8 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <DynamicWagmiProvider>
-        <body className={`overflow-auto w-full h-screen ${lexend.className}`}>
-          {children}
+        <body className={`flex flex-col ${lexend.className}`}>
+          <div className="flex-1 container items-center justify-center ">
+            {children}
+          </div>
+          <Footer />
         </body>
       </DynamicWagmiProvider>
     </html>

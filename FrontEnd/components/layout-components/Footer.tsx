@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 function Footer() {
     return (
-        <div className="bg-blue-950 flex justify-between items-center p-2 px-4 text-xs">
+        <div className="bg-blue-950 flex justify-between items-center p-2 px-4 text-xs mt-4">
             <div className='text-white flex items-center gap-2'>
                 <Copyright size={10} />
                 <p className='text-center'>Spr3ad <br/> 2024</p>        

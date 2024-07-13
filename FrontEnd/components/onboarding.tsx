@@ -6,6 +6,7 @@ import {
 import { Button } from "./ui/button";
 import { TAGS, shuffleTags } from "./utils/tags";
 import { useEffect, useState } from "react";
+import Spline from "@splinetool/react-spline";
 
 function Onboarding({ refresh }: { refresh: Function }) {
   const [userTags, setUserTags] = useState<
@@ -104,6 +105,10 @@ function Onboarding({ refresh }: { refresh: Function }) {
 
   return (
     <div className="mx-auto text-center flex flex-col gap-10 text-white">
+      <Spline
+        scene="https://prod.spline.design/GzQFnTdbQCeOpknA/scene.splinecode"
+        className="absolute inset-0 w-[50px]"
+      />
       <h1 className="text-3xl font-bold">Get Started</h1>
       <div className="link-wallet-container">
         <Button

@@ -10,14 +10,21 @@ import {
   GRID_STYLES,
 } from "@/components/ui/bento-grid-many";
 import { cn } from "@/lib/utils";
-import { Button } from '@/components/ui/button';
 import Illustration1 from "@/public/illustration1.png";
 import Illustration2 from "@/public/illustration2.png";
 import Illustration3 from "@/public/illustration3.png";
 import Illustration4 from "@/public/illustration4.png";
+import { Heart, Earth, HandCoins, ArrowRight } from 'lucide-react';
 
 // Define the illustrations array
 const illustrations = [Illustration1, Illustration2, Illustration3, Illustration4];
+
+const buttonTexts = [
+  { icon: <ArrowRight className="inline-block mr-2" />, text: "Join the community" },
+  { icon: <Heart className="inline-block mr-2" />, text: "Post what you love" },
+  { icon: <Earth className="inline-block mr-2" />, text: "Browse interesting content" },
+  { icon: <HandCoins className="inline-block mr-2" />, text: "Earn tokens by posting" },
+];
 
 export default function Home() {
   return (
@@ -42,7 +49,7 @@ export default function Home() {
               key={n}
               className={cn(
                 GRID_STYLES,
-                i === 1 && "md:col-span-3",
+                i === 2 && "md:col-span-4",
                 i === 2 && "md:col-start-1 md:col-span-3",
                 i === 1 && "md:col-start-2 md:col-span-4"
               )}
@@ -51,10 +58,8 @@ export default function Home() {
                 title={`Title ${n}`}
                 description={`Description for cell ${n}`}
                 illustration={illustrations[i % illustrations.length]}
+                buttonText={buttonTexts[i % buttonTexts.length]}
               />
-              <Button>
-                Test
-              </Button>
             </div>
           ))}
         </BentoGrid>
