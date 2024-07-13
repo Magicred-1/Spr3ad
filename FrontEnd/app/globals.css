@@ -35,6 +35,19 @@
     --radius: 0.5rem;
   }
 
+  @layer base {
+    * {
+      @apply border-border;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
+  }
+
+  .bg-blur {
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+  }
   .dark {
     --background: 0 0% 0%; /* Set background to black in dark mode as well */
     --foreground: 210 40% 98%;
