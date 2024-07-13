@@ -39,7 +39,7 @@ function Header() {
             <DynamicWidget />
             <div className="md:hidden flex items-center">
                 <Sheet open={menuOpen} onOpenChange={(opened) => { setMenuOpen(opened) }}>
-                    <SheetTrigger>
+                    <SheetTrigger asChild>
                         <button onClick={toggleMenu} className="text-white text-2xl focus:outline-none">
                             {menuOpen ? <X /> : <Menu />}
                         </button>
