@@ -8,7 +8,7 @@ import { User } from "@/types/User";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { TAGS } from "../utils/tags";
-import Select, { MultiValue } from "react-select";
+import ReactSelect, { MultiValue } from "react-select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "../ui/button";
 import FileInput from "../FileInput";
@@ -24,6 +24,7 @@ import {
 } from "../ui/carousel";
 import { usePublicClient, useWriteContract } from "wagmi";
 import { galadrielABI, getContract, spreadABI, testABI } from "@/lib/utils";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
 interface NewPostProps { }
 
@@ -36,6 +37,7 @@ export const NewPost: React.FC<NewPostProps> = () => {
     const [image, setImage] = useState<string | null>(null);
     const [text, setText] = useState<string>("");
     const [title, setTitle] = useState<string>("");
+    const [sponsorPost, setSponsorPost] = useState(false)
     const { writeContract } = useWriteContract();
     const publicClient = usePublicClient();
     const [user, setUser] = useState<User>({
@@ -146,7 +148,7 @@ export const NewPost: React.FC<NewPostProps> = () => {
                     <Input className="text-white" placeholder="Title" />
                 </div>
                 <div className="w-full flex flex-col">
-                    <Select
+                    <ReactSelect
                         onChange={(newValues) => {
                             updateTags(newValues);
                         }}
@@ -188,6 +190,43 @@ export const NewPost: React.FC<NewPostProps> = () => {
                             Generate AI tags with Galadriel
                         </label>
                     </div>
+                    <div className="flex w-full backdrop:flex items-center space-x-2 px-2 mt-2">
+                        <Checkbox
+                            className="text-white border-white"
+                            onCheckedChange={(e) => {
+                                setSponsorPost(e as boolean)
+                            }}
+                            onChange={(e) => {
+                                console.log(e.target)
+                            }}
+                            id="sponsor" />
+                        <label
+                            htmlFor="sponsor"
+                            className="text-white text-xs leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
+                            Sponsor this post
+                        </label>
+                    </div>
+                    {
+                        sponsorPost && (
+                            <div className="flex w-full backdrop:flex items-center space-x-2 px-2 mt-2">
+                                <Input
+                                    className="text-white"
+                                    placeholder="Sponsor amount"
+                                    type="number"
+                                />
+                                <Select >
+                                    <SelectTrigger className="w-[180px] text-white">
+                                        <SelectValue placeholder="Coin" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="APE">APE</SelectItem>
+                                        <SelectItem value="USDC">USDC</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                        )
+                    }
                 </div>
                 <Button
                     onClick={() => {
