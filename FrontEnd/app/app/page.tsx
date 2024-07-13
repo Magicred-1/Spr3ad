@@ -13,7 +13,7 @@ import { parseEther } from "viem";
 import { Button } from "@/components/ui/button";
 import { useUserWallets } from "@dynamic-labs/sdk-react-core";
 import Onboarding from "@/components/onboarding";
-import { getContract, spreadABI, usdcABI } from "@/lib/utils";
+import { getContract, spreadABI, usdcABI, user_posts } from "@/lib/utils";
 import Header from "@/components/layout-components/Header";
 import Spline from "@splinetool/react-spline";
 import Footer from "@/components/layout-components/Footer";
@@ -27,7 +27,7 @@ function AppHomePage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [activeCardIndex, setActiveCardIndex] = useState(0);
   useEffect(() => {
-    setPosts(dataBy.general.posts.slice().reverse());
+    setPosts(user_posts.slice().reverse());
   }, []);
   const { data: hash, sendTransaction } = useSendTransaction();
 
