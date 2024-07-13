@@ -5,7 +5,7 @@ import WorldcoinButton from "../WorldcoinButton";
 
 function Header() {
   return (
-    <div className="bg-blue-950 flex justify-around items-center">
+    <div className="bg-blue-950 flex justify-around items-center rounded-lg mx-8 mt-4 py-4">
       <Logo />
       <div className="flex items-center">
         {[
