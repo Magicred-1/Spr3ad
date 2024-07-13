@@ -41,7 +41,7 @@ function AppHomePage() {
             </div>
             <div className="flex flex-col justify-center items-end">
               <ArrowRightIcon size={32} />
-              <p className="">Swipe to Like</p>
+              <p className="">Swipe to Spread</p>
             </div>
           </div>
         </div>

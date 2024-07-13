@@ -3,6 +3,7 @@ import Image from "next/image"
 import TinderCard from 'react-tinder-card'
 import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import { getImageForUser, getNameForUser } from "../utils/getUserData"
+import { BlockscoutTx } from "./BlockscoutTx"
 interface PostCardProps {
     post: Post,
     onCardLeftScreen: () => void
@@ -32,13 +33,14 @@ export const PostCard: React.FC<PostCardProps> = ({ post, onCardLeftScreen }) =>
     const userImage = getImageForUser(post.user)
     return (
         <TinderCard
+        
             onCardLeftScreen={onCardLeftScreen}
             className="absolute top-0 bg-gray-200 w-full h-full rounded-xl shadow-xl py-4 px-2"
             onSwipe={onSwipe}
             preventSwipe={['up', 'down']}
         >
 
-            <div className="flex flex-col items-center justify-evenly h-full">
+            <div className="relative flex flex-col items-center justify-evenly h-full">
                 <div className="flex items-center bg-blur gap-x-2">
                     <Image alt={userName} src={userImage} width={200} height={200} className="rounded-full w-10 h-10" />
                     <p>
@@ -70,7 +72,12 @@ export const PostCard: React.FC<PostCardProps> = ({ post, onCardLeftScreen }) =>
                         {post.description}
                     </p>
                 )}
+                {post.txHash && post.chainId && (
 
+                    <BlockscoutTx txHash={post.txHash} chainId={post.chainId} />
+
+                )
+                }
 
             </div>
         </TinderCard>
