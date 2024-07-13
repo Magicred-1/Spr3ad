@@ -36,7 +36,9 @@ function Header() {
                     </a>
                 ))}
             </div>
-            <DynamicWidget />
+            <div className="hidden md:flex items-center">
+                <DynamicWidget />
+            </div>
             <div className="md:hidden flex items-center">
                 <Sheet open={menuOpen} onOpenChange={(opened: any) => { setMenuOpen(opened) }}>
                     <SheetTrigger>
@@ -55,6 +57,7 @@ function Header() {
                                     {item.name}
                                 </a>
                             ))}
+                            <DynamicWidget />
                         </div>
                     </SheetContent>
                 </Sheet>
