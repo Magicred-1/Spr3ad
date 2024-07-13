@@ -1,4 +1,4 @@
-import { Post } from "@/types/Post";
+import { Post, dataBy } from "@/types/Post";
 import Image from "next/image";
 import TinderCard from "react-tinder-card";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
@@ -28,6 +28,7 @@ import { galadrielABI, getContract, spreadABI } from "@/lib/utils";
 interface NewPostProps {}
 
 export const NewPost: React.FC<NewPostProps> = () => {
+  const [tags, setTags] = useState(dataBy.general.tags);
   const [useGaladriel, setUseGaladriel] = useState(true);
   const [files, setFiles] = useState<File[]>([]);
   const [ipfsHashes, setIpfsHashes] = useState<string[]>([]);
@@ -74,11 +75,12 @@ export const NewPost: React.FC<NewPostProps> = () => {
 
     const id = await publicClient?.getChainId()!;
     const contractAddress = getContract("galadriel", id);
+    console.log(text, tags);
     writeContract({
       abi: galadrielABI,
       address: contractAddress,
       functionName: "sendMessage",
-      args: [text],
+      args: [text, tags],
     });
     console.log("🚀 ~ sendPost ~ response:", response);
     console.log(postObj);

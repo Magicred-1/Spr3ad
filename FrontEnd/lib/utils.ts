@@ -6,6 +6,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+// https://explorer.galadriel.com/address/0x68EC9556830AD097D661Df2557FBCeC166a0A075 -> EXPLORER POUR WATCH OPEN AI RESPONSE
+
 export const contracts = {
   [customEVMChains[0].chainId]: {
     "usdc": "0x2AC06739b05ED9D93f55E8e7c4396215bf3865CD",
