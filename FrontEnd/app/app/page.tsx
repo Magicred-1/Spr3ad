@@ -32,8 +32,8 @@ function AppHomePage() {
   return (
     <div className="h-full flex items-center justify-center">
       {/* TODO: IF USER DOESNT EXISTS IN SMART CONTRACT : <Onboarding /> */}
-      <Button onClick={testTx}>Test Transaction</Button>
-      {hash && <div>Transaction Hash: {hash}</div>}
+      {/* <Button onClick={testTx}>Test Transaction</Button>
+      {hash && <div>Transaction Hash: {hash}</div>} */}
       {posts ? (
         <div className="h-full w-full  flex flex-col items-center justify-center">
           <div className="relative flex items-center justify-center w-full h-[34rem] ">
