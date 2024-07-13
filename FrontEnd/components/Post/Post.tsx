@@ -10,7 +10,7 @@ function PostComponent({ post }: {
             <h3 className="text-white text-lg font-bold">{post.title}</h3>
 
             {post.mediaUrl && (<div className="flex items-center gap-4 p-2">
-                <Image alt={"postImage"} src={post.mediaUrl} width={200} height={200} className="rounded-full w-10 h-10" />
+                <Image alt={"postImage"} src={post.mediaUrl} width={200} height={200} className="" />
             </div>)}
             <p className="text-white text-base flex-1">{post.description}</p>
             <div className="flex gap-2">
