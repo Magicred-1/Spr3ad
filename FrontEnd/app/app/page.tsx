@@ -6,8 +6,12 @@ import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import { useSendTransaction } from "wagmi";
 import { parseEther } from "viem";
 import { Button } from "@/components/ui/button";
+import { useUserWallets } from "@dynamic-labs/sdk-react-core";
+import Onboarding from "@/components/onboarding";
 
 function AppHomePage() {
+  const [userSetup, setUserSetup] = useState(false);
+  const userWallets = useUserWallets();
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
@@ -29,12 +33,15 @@ function AppHomePage() {
     // setPosts(postsWithoutFirst);
   };
 
+  const checkIfUserSetup = () => {
+    const address = userWallets[0].address;
+    setUserSetup(true);
+  };
+
   return (
     <div className="h-full flex items-center justify-center">
-      {/* TODO: IF USER DOESNT EXISTS IN SMART CONTRACT : <Onboarding /> */}
-      {/* <Button onClick={testTx}>Test Transaction</Button>
-      {hash && <div>Transaction Hash: {hash}</div>} */}
-      {posts ? (
+      {!userSetup && <Onboarding refresh={checkIfUserSetup} />}
+      {userSetup && posts && (
         <div className="h-full w-full  flex flex-col items-center justify-center">
           <div className="relative flex items-center justify-center w-full h-[34rem] ">
             {posts.map((post, index) => (
@@ -57,8 +64,6 @@ function AppHomePage() {
             </div>
           </div>
         </div>
-      ) : (
-        <p>No more posts</p>
       )}
     </div>
   );
