@@ -23,7 +23,7 @@ const buttonTexts = [
   { icon: <ArrowRight className="inline-block mr-2" />, text: "Join the community" },
   { icon: <Heart className="inline-block mr-2" />, text: "Post what you love" },
   { icon: <Earth className="inline-block mr-2" />, text: "Browse interesting content" },
-  { icon: <HandCoins className="inline-block mr-2" />, text: "Earn tokens by posting" },
+  { icon: <HandCoins className="inline-block mr-2" />, text: "Start spreading" },
 ];
 
 export default function Home() {
@@ -64,7 +64,6 @@ export default function Home() {
           ))}
         </BentoGrid>
       </div>
-      <Footer />
     </>
   );
 }

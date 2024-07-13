@@ -35,7 +35,7 @@ export default function WorldcoinButton() {
             handleVerify={handleVerify} // optional callback when the proof is received
             verification_level={VerificationLevel.Device}
           >
-            {({ open } : {open: any}) => (
+            {({ open }: { open: any }) => (
               <button
                 className="cursor-pointer border-none px-5 py-2 rounded-md w-fit mx-auto bg-black hover:opacity-90 hover:bg-black transition text-white"
                 onClick={open}
