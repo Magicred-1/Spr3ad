@@ -1,7 +1,6 @@
 import DynamicWagmiProvider from "@/lib/utils/DynamicWagmiProvider";
 import "./globals.css";
 import { lexend } from "@/components/utils/const";
-import Header from "@/components/layout-components/Header";
 import Footer from "@/components/layout-components/Footer";
 import { Metadata } from "next";
 
@@ -29,6 +28,7 @@ export default function RootLayout({
           <div className="flex-1 container items-center justify-center ">
             {children}
           </div>
+          <Footer />
         </body>
       </DynamicWagmiProvider>
     </html>

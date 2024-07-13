@@ -25,7 +25,6 @@ const ProfilePage = () => {
                     ))}
                 </div>
             </div>
-            <Footer />
         </>
     );
 }

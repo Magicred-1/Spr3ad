@@ -72,7 +72,6 @@ function AppHomePage() {
           </div>
         )}
       </div>
-      <Footer />
     </>
   );
 }
