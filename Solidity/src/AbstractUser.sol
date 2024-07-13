@@ -8,7 +8,7 @@ abstract contract AbstractUser {
     
     event UserCreated(address user, string[] tags);
 
-    function setupUser(string[] tags) external {
+    function setupUser(string[] memory tags) external {
         address user = msg.sender;
         userToTags[user] = tags;
         users.push(user);

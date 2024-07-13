@@ -26,7 +26,7 @@ abstract contract AbstractInboxes {
         emit CardReceived(user, cardId);
     }
 
-    function dequeue(address user) internal returns (InboxedCard) {
+    function dequeue(address user) internal returns (InboxedCard memory) {
         require(userToInbox[user].queue.length > 0, "Queue is empty");
         require(userToInbox[user].front <= userToInbox[user].rear, "Queue is empty");
 
@@ -38,7 +38,7 @@ abstract contract AbstractInboxes {
         return dequeuedCard;
     }
 
-    function peek(address user) public view returns (InboxedCard) {
+    function peek(address user) public view returns (InboxedCard memory) {
         require(userToInbox[user].queue.length > 0, "Queue is empty");
         require(userToInbox[user].front <= userToInbox[user].rear, "Queue is empty");
         return userToInbox[user].queue[userToInbox[user].front];
