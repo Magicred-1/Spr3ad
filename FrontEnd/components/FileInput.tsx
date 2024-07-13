@@ -1,5 +1,8 @@
 "use client"
 import lighthouse from '@lighthouse-web3/sdk'
+import { ImagePlus } from 'lucide-react'
+import { Button } from './ui/button'
+import { useRef } from 'react'
 
 
 const progressCallback = (progressData: any) => {
@@ -19,6 +22,7 @@ function FileInput({
     setIpfsHashes: React.Dispatch<React.SetStateAction<string[]>>
 }) {
 
+    const inputRef = useRef<HTMLInputElement>(null)
 
     const uploadFile = async (files: FileList) => {
         // Push file to lighthouse node
@@ -51,12 +55,27 @@ function FileInput({
     }
 
 
-    return (<input type="file" accept="image/*" onChange={(event) => {
-        const files = event.target.files;
-        if (files) {
-            uploadFile(files);
-        }
-    }} />);
+    return (
+        <Button
+            className='rounded-3xl'
+            onClick={() => {
+                if (inputRef.current) {
+                    inputRef.current.click()
+                }
+            }}
+        >
+            <ImagePlus />
+            <input
+                ref={inputRef}
+                type="file" style={{ display: 'none' }} accept="image/*" onChange={(event) => {
+                    const files = event.target.files;
+                    if (files) {
+                        uploadFile(files);
+                    }
+                }} />
+
+        </Button>
+    );
 }
 
 export default FileInput;
