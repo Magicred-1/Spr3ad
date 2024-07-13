@@ -1,9 +1,0 @@
-{
-    "build": {
-      "env": {
-        "NODE_ENV": "production"
-      }
-    },
-    "install": "npm install --legacy-peer-deps"
-  }
-  
