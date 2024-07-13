@@ -33,7 +33,7 @@ const galadriel = {
   },
 } as const satisfies Chain;
 
-const config = createConfig({
+export const config = createConfig({
   chains: [
     mainnet,
     galadriel,
@@ -61,7 +61,7 @@ const config = createConfig({
 
 const queryClient = new QueryClient();
 
-const customEVMChains = [
+export const customEVMChains = [
   {
     blockExplorerUrls: ["https://explorer.galadriel.com"],
     chainId: 696969,

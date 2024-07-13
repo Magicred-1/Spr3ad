@@ -7,6 +7,8 @@ import { Button } from "./ui/button";
 import { TAGS, shuffleTags } from "./utils/tags";
 import { useEffect, useState } from "react";
 import Spline from "@splinetool/react-spline";
+import { usePublicClient, useWriteContract } from "wagmi";
+import { getContract, spreadABI } from "@/lib/utils";
 
 function Onboarding({ refresh }: { refresh: Function }) {
   const [userTags, setUserTags] = useState<
@@ -19,11 +21,25 @@ function Onboarding({ refresh }: { refresh: Function }) {
   const { setShowLinkNewWalletModal } = useDynamicModals();
   const userWallets = useUserWallets();
   const [lastSeenWallets, setLastSeenWallets] = useState<string[]>([]);
+  const publicClient = usePublicClient();
+  const { writeContract } = useWriteContract();
 
   const isThereNewWallets = () => {
     return userWallets.some(
       (wallet) => !lastSeenWallets.includes(wallet.address)
     );
+  };
+
+  const setupUser = async () => {
+    const id = await publicClient?.getChainId()!;
+    const contractAddress = getContract("spread", id);
+
+    writeContract({
+      abi: spreadABI,
+      address: contractAddress,
+      functionName: "setupUser",
+      args: [userTags],
+    });
   };
 
   const getIfApeCoinHolder = async (address: string) => {
@@ -97,18 +113,17 @@ function Onboarding({ refresh }: { refresh: Function }) {
     getUserTags();
   }, [userWallets]);
 
-  const setup = () => {
-    //TODO
-    // setup
-    refresh();
+  const setup = async () => {
+    await setupUser();
+    refresh(true);
   };
 
   return (
-    <div className="mx-auto text-center flex flex-col gap-10 text-white">
-      <Spline
+    <div className="mx-auto text-center flex flex-col gap-10 text-white bg-black/80">
+      {/* <Spline
         scene="https://prod.spline.design/GzQFnTdbQCeOpknA/scene.splinecode"
         className="absolute inset-0 w-[50px]"
-      />
+      /> */}
       <h1 className="text-3xl font-bold">Get Started</h1>
       <div className="link-wallet-container">
         <Button
