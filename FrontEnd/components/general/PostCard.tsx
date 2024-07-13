@@ -41,14 +41,11 @@ export const PostCard: React.FC<PostCardProps> = ({ post, onCardLeftScreen }) =>
                 </p>
             </div>
             <div className="flex flex-col items-center justify-evenly h-full">
-                {post.mediaUrl ? (
-                    <Image alt={post.description} src={post.mediaUrl} width={300} height={300} />
-                ) : (
-                    <p className="text-center">
+                <Image className="rounded-xl w-full h-48 object-cover" alt={post.description} src={post.mediaUrl ? post.mediaUrl : "/defaultPost.jpg"}  width={300} height={300} />
+                <p className="text-center">
                         {post.description}
                     </p>
-                )}
-                <p>
+                <p> 
                     {post.title}
                 </p>
                 <div>
