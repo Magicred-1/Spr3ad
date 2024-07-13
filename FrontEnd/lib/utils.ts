@@ -7,18 +7,23 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // https://explorer.galadriel.com/address/0x68EC9556830AD097D661Df2557FBCeC166a0A075 -> EXPLORER POUR WATCH OPEN AI RESPONSE
+// THEGRAPH https://thegraph.com/explorer/subgraphs/EKYuDy59ZZvn82cJkpbtSWtkJJap5qDongmpNz3xcRZc?view=Query&chain=mainnet
+// contract https://explorer.galadriel.com/address/0xF7a8Bbea3449585CB93c7852B8A3ddE6B0164F21
 
 export const contracts = {
   [customEVMChains[0].chainId]: {
     "usdc": "0x2AC06739b05ED9D93f55E8e7c4396215bf3865CD",
     "galadriel": "0x4f1d722Be554DaAf0d2B934B29ABEA464bF8C6E7",
-    "spread": "0x35b97f170f439f4C411fAA9076B38A6Bd0BF2247"
+    "spread": "0xBa6F3e72A5Eb4474cf66E4Db09CAbc5fE232131F",
+    "test": "0xF7a8Bbea3449585CB93c7852B8A3ddE6B0164F21"
   }
 }
 
-export const getContract = (name: "usdc" | "galadriel" | "spread", chainId: number): `0x${string}` => {
+export const getContract = (name: "usdc" | "galadriel" | "spread" | "test", chainId: number): `0x${string}` => {
   return contracts[chainId][name] as `0x${string}`
 }
+
+export const testABI = [{ "type": "function", "name": "postCard", "inputs": [{ "name": "hash", "type": "string", "internalType": "string" }, { "name": "message", "type": "string", "internalType": "string" }], "outputs": [], "stateMutability": "nonpayable" }, { "type": "function", "name": "repost", "inputs": [], "outputs": [], "stateMutability": "nonpayable" }, { "type": "function", "name": "skip", "inputs": [], "outputs": [], "stateMutability": "nonpayable" }]
 
 export const galadrielABI = [
   {

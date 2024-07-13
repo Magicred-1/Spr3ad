@@ -84,7 +84,7 @@ contract OpenAiSimpleLLM {
         } else {
             responses[runId] = _response.content;
             string[] memory tags = getResponse(runId);
-            Spread spread = Spread(0x35b97f170f439f4C411fAA9076B38A6Bd0BF2247);
+            Spread spread = Spread(0xBa6F3e72A5Eb4474cf66E4Db09CAbc5fE232131F);
             spread.setTagsAndSendInboxes(runId, tags);
         }
     }

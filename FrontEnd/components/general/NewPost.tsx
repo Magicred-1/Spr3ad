@@ -23,7 +23,7 @@ import {
   CarouselPrevious,
 } from "../ui/carousel";
 import { usePublicClient, useWriteContract } from "wagmi";
-import { galadrielABI, getContract, spreadABI } from "@/lib/utils";
+import { galadrielABI, getContract, spreadABI, testABI } from "@/lib/utils";
 
 interface NewPostProps {}
 
@@ -74,14 +74,24 @@ export const NewPost: React.FC<NewPostProps> = () => {
     );
 
     const id = await publicClient?.getChainId()!;
-    const contractAddress = getContract("galadriel", id);
-    console.log(text, tags);
+    const galaAddress = getContract("galadriel", id);
+    const testAddress = getContract("test", id);
+    if (id === 696969) {
+      writeContract({
+        abi: galadrielABI,
+        address: galaAddress,
+        functionName: "sendMessage",
+        args: [text, tags],
+      });
+    }
+    console.log(response.data.Hash, text);
     writeContract({
-      abi: galadrielABI,
-      address: contractAddress,
-      functionName: "sendMessage",
-      args: [text, tags],
+      abi: testABI,
+      address: testAddress,
+      functionName: "postCard",
+      args: [response.data.Hash, text],
     });
+
     console.log("🚀 ~ sendPost ~ response:", response);
     console.log(postObj);
     console.log(
