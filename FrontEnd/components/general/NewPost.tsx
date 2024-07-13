@@ -8,7 +8,7 @@ import { User } from "@/types/User"
 import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { TAGS } from "../utils/tags"
-import Select, { MultiValue } from 'react-select'
+import ReactSelect, { MultiValue } from 'react-select'
 import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "../ui/button"
 import FileInput from "../FileInput"
@@ -16,6 +16,7 @@ import lighthouse from '@lighthouse-web3/sdk'
 import { Input } from "../ui/input"
 import { Textarea } from "../ui/textarea"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel"
+import { SelectContent, SelectItem, SelectTrigger, SelectValue, Select } from "../ui/select"
 
 
 interface NewPostProps {
@@ -25,6 +26,7 @@ export const NewPost: React.FC<NewPostProps> = () => {
     const [useGaladriel, setUseGaladriel] = useState(true)
     const [files, setFiles] = useState<File[]>([])
     const [ipfsHashes, setIpfsHashes] = useState<string[]>([])
+    const [sponsorPost, setSponsorPost] = useState(false)
     const [selectedTags, setSelectedTags] = useState<string[]>([])
     const [image, setImage] = useState<string | null>(null)
     const [text, setText] = useState<string>("")
@@ -79,7 +81,7 @@ export const NewPost: React.FC<NewPostProps> = () => {
         <div
             className="top-0 bg-blue-950 w-full h-[34rem] rounded-xl shadow-xl py-4 px-2"
         >
-            <div className="relative flex flex-col items-center justify-evenly h-full">
+            <div className="relative flex flex-col items-center justify-evenly h-full gap-2">
                 {/* <div className="flex items-center bg-blur gap-x-2">
                     <Image alt={userName} src={userImage} width={200} height={200} className="rounded-full w-10 h-10" />
                     <p>
@@ -108,14 +110,11 @@ export const NewPost: React.FC<NewPostProps> = () => {
                         <FileInput setFiles={setFiles} setIpfsHashes={setIpfsHashes} />
                     </div>
                 </div>
-                <div className="flex gap-2 p-2">
-
-                </div>
                 <div className="w-full flex flex-col">
                     <Input className="text-white" placeholder="Title" />
                 </div>
                 <div className="w-full flex flex-col">
-                    <Select
+                    <ReactSelect
                         onChange={(newValues) => {
                             updateTags(newValues)
                         }}
@@ -150,6 +149,44 @@ export const NewPost: React.FC<NewPostProps> = () => {
                             Generate AI tags with Galadriel
                         </label>
                     </div>
+                    <div className="flex w-full backdrop:flex items-center space-x-2 px-2 mt-2">
+                        <Checkbox
+                            className="text-white border-white"
+                            onCheckedChange={(e) => {
+                                setSponsorPost(e as boolean)
+                            }}
+                            onChange={(e) => {
+                                console.log(e.target)
+                            }}
+                            id="sponsor" />
+                        <label
+                            htmlFor="sponsor"
+                            className="text-white text-xs leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
+                            Sponsor this post
+                        </label>
+                    </div>
+                    {
+                        sponsorPost && (
+                            <div className="flex w-full backdrop:flex items-center space-x-2 px-2 mt-2">
+                                <Input
+                                    className="text-white"
+                                    placeholder="Sponsor amount"
+                                    type="number"
+                                />
+                                <Select >
+                                    <SelectTrigger className="w-[180px] text-white">
+                                        <SelectValue placeholder="Coin" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="APE">APE</SelectItem>
+                                        <SelectItem value="USDC">USDC</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+                        )
+                    }
+
                 </div>
                 <Button
                     onClick={() => {
