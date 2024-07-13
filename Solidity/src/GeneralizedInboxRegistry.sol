@@ -1,0 +1,1 @@
+// factory + registry of the generalized inboxes
