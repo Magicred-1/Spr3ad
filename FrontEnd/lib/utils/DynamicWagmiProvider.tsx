@@ -58,7 +58,7 @@ const config = createConfig({
 
 const queryClient = new QueryClient();
 
-const customEVMChains = [
+export const customEVMChains = [
   {
     blockExplorerUrls: ["https://explorer.galadriel.com"],
     chainId: 696969,
