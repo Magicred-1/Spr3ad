@@ -28,6 +28,10 @@ export const PostCard: React.FC<PostCardProps> = ({ post, changeActiveCard }) =>
     const handleLike = () => {
         console.log(address)
         console.log('like');
+        if (!address) {
+            return;
+        }
+
         if (post.isSponsored && post.sponsoredToken) {
 
             writeContract({
