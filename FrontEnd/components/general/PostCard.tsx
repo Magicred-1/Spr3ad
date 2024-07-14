@@ -446,7 +446,7 @@ export const PostCard: React.FC<PostCardProps> = ({
         <TinderCard
             className="absolute top-0 text-white shadow-inner border border-white/40 overflow-hidden
                       bg-black bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-50
-                      w-full h-full rounded-xl py-4 px-2"
+                      w-full h-full rounded-xl py-4 px-2 animate-fade-in"
             onSwipe={onSwipe}
             onCardLeftScreen={changeActiveCard}
             preventSwipe={["up", "down"]}
