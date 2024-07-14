@@ -11,15 +11,15 @@ contract AppScript is Script {
     string[] tags;
 
     function setUp() public {
-        tagNfswSetterGaladriel = 0x000D84A0Bc054b32a0Ae8587aB0EC7c4B85C294e;
+        tagNfswSetterGaladriel = 0xb27FeCed5a3E1aeB257F055C3b47E792612C0972;
         subscriptionId = 68404686874014089213998579493500905828531299948922329510242288524861874420973;
     }
 
     function run() public {
-        vm.broadcast();
-        //APPLICATION = new App(tagNfswSetterGaladriel, subscriptionId);
-        APPLICATION = App(0x35b97f170f439f4C411fAA9076B38A6Bd0BF2247);
-        // setGaladriel();
+        vm.startBroadcast();
+        APPLICATION = new App(tagNfswSetterGaladriel, subscriptionId);
+        //APPLICATION = App(0xBa6F3e72A5Eb4474cf66E4Db09CAbc5fE232131F);
+        setGaladriel();
         setTags();
     }
 

@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
-pragma abicoder v2;
 
 import {AbstractInboxes, InboxedCard} from "./AbstractInboxes.sol";
 import {AbstractGeneralizedInboxes} from "./AbstractGeneralizedInboxes.sol";
@@ -11,7 +10,6 @@ import {CardRegistry} from "./CardRegistry.sol";
 import {VRFConsumerBaseV2Plus} from "chainlink/src/v0.8/vrf/dev/VRFConsumerBaseV2Plus.sol";
 import {VRFV2PlusClient} from "chainlink/src/v0.8/vrf/dev/libraries/VRFV2PlusClient.sol";
 
-// TODO: only owner
 contract App is VRFConsumerBaseV2Plus, IActions, CardRegistry, AbstractInboxes, AbstractGeneralizedInboxes, AbstractUser{
     string[] ALLTAGS;
     address tagNfswSetterGaladriel;
@@ -29,8 +27,8 @@ contract App is VRFConsumerBaseV2Plus, IActions, CardRegistry, AbstractInboxes, 
         tagNfswSetterGaladriel = galadriel_;
     }
 
-    function postCard(bytes32 hash, uint8 hash_function, string memory message) external returns (bytes32 cardId){
-        cardId = createCard(hash, hash_function, message, msg.sender);
+    function postCard(string memory hash, string memory message) external returns (bytes32 cardId){
+        cardId = createCard(hash, message, msg.sender);
         
         if (tagNfswSetterGaladriel != address(0x0)){
             // call Galadriel for the tags
