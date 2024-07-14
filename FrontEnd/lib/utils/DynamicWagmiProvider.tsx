@@ -79,6 +79,23 @@ export const customEVMChains = [
     rpcUrls: ["https://devnet.galadriel.com"],
     vanityName: "Galadriel Devnet",
   },
+  {
+    blockExplorerUrls: ["https://explorer.zero.network"],
+    chainId: 4457845,
+    chainName: "ZERϴ Network",
+    iconUrls: [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPMDlry5SuZn_DufynOlgepbQr5uUYlsRweA&s",
+    ],
+    name: "ZERϴ Network",
+    nativeCurrency: {
+      decimals: 18,
+      name: "ZERϴ",
+      symbol: "ETH",
+    },
+    networkId: 4457845,
+    rpcUrls: ["https://rpc.zerion.io/v1/zero-sepolia"],
+    vanityName: "ZERϴ Network",
+  }
 ];
 
 const DynamicWagmiProvider = ({ children }: { children: React.ReactNode }) => {
