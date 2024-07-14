@@ -3,13 +3,8 @@ pragma solidity ^0.8.13;
 
 // Every Card data is created and stored here
 
-struct Multihash {
-    bytes32 hash;
-    uint8 hash_function;
-}
-
 struct Card{
-    Multihash uri;
+    string uri;
     string message;
     address initialPoster;
     string[] tags;

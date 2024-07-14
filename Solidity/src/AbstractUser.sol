@@ -16,7 +16,7 @@ abstract contract AbstractUser {
     }
 
     function userReach(address user) view public returns(uint32 reach){
-        reach = 8; //TODO: add a dynamic function
+        reach = 8;
     }
 
     function updateReputation(bool up, address user) internal {
