@@ -12,6 +12,7 @@ export interface Post {
     endorses?: number;
     isSponsored?: boolean;
     sponsoredToken?: string;
+    tokenAddress?: `0x${string}`;
 }
 
 export const mockedPosts: Post[] = [
@@ -27,6 +28,7 @@ export const mockedPosts: Post[] = [
         },
         txHash: "0x123",
         chainId: 1,
+        tokenAddress: "0x06daeD3902Cac6C56B6906F150A54882A07Ebe10"
     },
     {
         title: "Post 2",
@@ -61,8 +63,8 @@ export interface data {
     posts: Post[]
 }
 
-const getGeneratedUser = (number:number) => {
-    const randomNames = ["N0rooo", "10gust10", "Juents"] 
+const getGeneratedUser = (number: number) => {
+    const randomNames = ["N0rooo", "10gust10", "Juents"]
     return {
         id: "1",
         name: randomNames[number],
@@ -71,7 +73,7 @@ const getGeneratedUser = (number:number) => {
     }
 }
 
-const ApeCoinUser : User = {
+const ApeCoinUser: User = {
     id: "1",
     name: "ApeCoin",
     ens: "user1.eth",
@@ -79,7 +81,7 @@ const ApeCoinUser : User = {
     img: "https://s2.coinmarketcap.com/static/img/coins/200x200/18876.png",
 }
 
-const ScrollUser : User = {
+const ScrollUser: User = {
     id: "1",
     name: "Scroll",
     ens: "user1.eth",
@@ -87,7 +89,7 @@ const ScrollUser : User = {
     img: "https://img.cryptorank.io/coins/scroll1693474620599.png",
 }
 
-const BaseUser : User = {
+const BaseUser: User = {
     id: "1",
     name: "Base",
     ens: "user1.eth",
@@ -95,7 +97,7 @@ const BaseUser : User = {
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLD4nw-rVHS3S91_rxVS-M2egS1yRkncPJDA&s",
 }
 
-const ArbitrumUser : User = {
+const ArbitrumUser: User = {
     id: "1",
     name: "Arbitrum",
     ens: "user1.eth",
@@ -103,7 +105,7 @@ const ArbitrumUser : User = {
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyflpuaM1GZXcYzmBlcqnOmJilMMq34-4mVw&s",
 }
 
-const ZerionUser : User = {
+const ZerionUser: User = {
     id: "1",
     name: "Zerion",
     ens: "user1.eth",
@@ -111,7 +113,7 @@ const ZerionUser : User = {
     img: "https://www.cryptotimes.io/wp-content/uploads/2024/03/6568840f9547ecd55a9f5c9c_Homepage_thumbnail-min-scaled.jpg",
 }
 
-const BlastUser : User = {
+const BlastUser: User = {
     id: "1",
     name: "Blast",
     ens: "user1.eth",
@@ -119,7 +121,7 @@ const BlastUser : User = {
     img: "https://pbs.twimg.com/profile_images/1805963937449381888/aNF8BIJo_400x400.jpg",
 }
 
-export const dataBy  = {
+export const dataBy = {
     apecoin: {
         tags: ["ApeCoin Holder", "BoredApe Holder", "Layer2 user", "NFT Enthusiast", "Metaverse Explorer", "DAO Member", "DeFi Participant", "Web3 Developer", "Crypto Trader", "Token Staker"],
         posts: [
@@ -129,7 +131,8 @@ export const dataBy  = {
                 "tags": ["ApeCoin Holder", "DAO Member", "NFT Enthusiast"],
                 "isSponsored": true,
                 user: ApeCoinUser,
-                sponsoredToken: "APE"
+                sponsoredToken: "APE",
+                tokenAddress: "0x06daeD3902Cac6C56B6906F150A54882A07Ebe10"
             },
             {
                 "description": "Did you know? ApeCoin holders get exclusive access to upcoming Bored Ape Yacht Club events. Don't miss out!",
@@ -156,7 +159,8 @@ export const dataBy  = {
                 "tags": ["Base Protocol", "Layer2 user", "Scalability Enthusiast"],
                 "isSponsored": true,
                 user: BaseUser,
-                sponsoredToken: "USDC"
+                sponsoredToken: "USDC",
+                tokenAddress: "0xd7b42907D430D1C073413976CD12E205edcA0efB"
             },
             {
                 "description": "Base Protocol offers one of the lowest gas fees in the market. Optimize your transactions today!",
@@ -284,15 +288,17 @@ export const dataBy  = {
         ]
     },
     "general": {
-        "tags": ["DeFi Enthusiast","Layer2 User" , "NFT Collector", "Crypto Trader", "Blockchain Developer", "Web3 Innovator", "DAO Member", "Token Holder", "Yield Farmer", "Metaverse Explorer", "Crypto Investor"],
+        "tags": ["DeFi Enthusiast", "Layer2 User", "NFT Collector", "Crypto Trader", "Blockchain Developer", "Web3 Innovator", "DAO Member", "Token Holder", "Yield Farmer", "Metaverse Explorer", "Crypto Investor"],
         "posts": [
+            // Galadriel Only
             {
                 "description": "Blast Phase 2 now begins: Enter the Fullstack Chain",
                 "mediaUrl": "https://pbs.twimg.com/media/GRATaWnbIAA-Ic3?format=jpg&name=4096x4096",
                 "tags": ["DeFi Enthusiast", "Layer2 User", "Yield Farmer"],
                 "isSponsored": true,
                 user: BlastUser,
-                sponsoredToken: "USDC"
+                sponsoredToken: "USDC",
+                tokenAddress: "0xd7b42907D430D1C073413976CD12E205edcA0efB"
             },
             {
                 "description": "NFTs are changing the digital art world. Learn how to mint, trade, and collect your own non-fungible tokens.",
