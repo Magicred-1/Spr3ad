@@ -5,9 +5,10 @@ import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 import { getImageForUser, getNameForUser } from "../utils/getUserData"
 import { BlockscoutTx } from "./BlockscoutTx"
 import { Badge } from "../ui/badge"
-import { useAccount, useWaitForTransactionReceipt, useWriteContract } from "wagmi"
+import { useAccount, usePublicClient, useWaitForTransactionReceipt, useWriteContract } from "wagmi"
 import { parseEther, zeroAddress } from "viem"
 import { toast } from "sonner"
+import { getContract, testABI } from "@/lib/utils"
 
 interface PostCardProps {
     post: Post,
@@ -16,6 +17,7 @@ interface PostCardProps {
 
 export const PostCard: React.FC<PostCardProps> = ({ post, changeActiveCard }) => {
     const { address } = useAccount();
+    const publicClient = usePublicClient()
     const {
         data: hash,
         writeContract
@@ -394,9 +396,17 @@ export const PostCard: React.FC<PostCardProps> = ({ post, changeActiveCard }) =>
         }
     }
 
-    const handleSkip = () => {
-        console.log('skip');
-    }
+    const handleSkip = async () => {
+        const id = await publicClient?.getChainId()!;
+        const testAddress = getContract("test", id);
+        writeContract({
+          abi: testABI,
+          address: testAddress,
+          functionName: "skip",
+        });
+      };
+    
+  
 
     const onSwipe = (direction: string) => {
         if (direction === 'right') {
@@ -414,13 +424,18 @@ export const PostCard: React.FC<PostCardProps> = ({ post, changeActiveCard }) =>
 
     return (
         <TinderCard
-            className="absolute top-0 text-white shadow-inner border border-white/40 
+            className="absolute top-0 text-white shadow-inner border border-white/40 overflow-hidden
                       bg-black bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-50
                       w-full h-full rounded-xl py-4 px-2"
             onSwipe={onSwipe}
             onCardLeftScreen={changeActiveCard}
             preventSwipe={['up', 'down']}
         >
+            {post.isSponsored && (
+            <p className="absolute px-10 py-1 bg-blue-600 text-white top-5 -left-10 -rotate-[40deg]">
+                FEATURED
+            </p>
+            )}
             <div className="relative flex flex-col items-center justify-evenly h-full">
                 <div className="flex items-center gap-x-2">
                     <Image alt={userName} src={userImage} width={200} height={200} className="rounded-full w-10 h-10" />
@@ -458,6 +473,14 @@ export const PostCard: React.FC<PostCardProps> = ({ post, changeActiveCard }) =>
                 {post.txHash && post.chainId && (
                     <BlockscoutTx txHash={post.txHash} chainId={post.chainId} />
                 )}
+                {post.isSponsored && (
+                    <p className=" px-2 py-1 bg-blue-600 text-white rounded-lg">
+                EARN 50 ${post.sponsoredToken}
+                    </p>
+
+                )
+                }
+
             </div>
         </TinderCard>
     );

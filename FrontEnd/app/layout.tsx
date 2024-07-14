@@ -25,7 +25,7 @@ export default function RootLayout({
       <DynamicWagmiProvider>
         <body className={`h-full flex flex-col ${lexend.className}`}>
           <Header />
-          <div className="flex-1 items-center justify-center">
+          <div className="flex-1 items-center container justify-center">
             {children}
           </div>
           <Footer />
