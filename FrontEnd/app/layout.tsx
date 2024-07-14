@@ -21,11 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ height: '100%' }} >
       <DynamicWagmiProvider>
-        <body className={` h-full flex flex-col ${lexend.className}`}>
+        <body className={`h-full flex flex-col ${lexend.className}`}>
           <Header />
-          <div className="flex-1 container h-full items-center justify-center ">
+          <div className="flex-1 items-center justify-center">
             {children}
           </div>
           <Footer />

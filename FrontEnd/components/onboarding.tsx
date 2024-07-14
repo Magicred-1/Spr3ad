@@ -122,7 +122,7 @@ function Onboarding({ refresh }: { refresh: Function }) {
   };
 
   return (
-    <div className="mx-auto text-center flex flex-col gap-10 text-white bg-black/80">
+    <div className="mx-auto text-center rounded-3xl p-2 flex flex-col gap-10 text-white bg-black/80">
       {/* <Spline
         scene="https://prod.spline.design/GzQFnTdbQCeOpknA/scene.splinecode"
         className="absolute inset-0 w-[50px]"
