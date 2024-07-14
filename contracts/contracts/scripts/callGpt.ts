@@ -19,8 +19,8 @@ async function main() {
 
   // Create a contract instance
   const contract = new ethers.Contract(contractAddress, contractABI, signer);
-  const resptest = await contract.getResponse(6561);
-  console.log("resptest", resptest);
+  // const resptest = await contract.getResponse(6561);
+  // console.log("resptest", resptest);
   // The content of the image you want to generate
   const testmessage = "L2con by Epic Web3 was a blast!  850 attendees in total! 30 speakers! Amazing discussions brought by the leading builders in web3! Very thankful to all of you for making it happen"
   // Call the startChat function
@@ -37,18 +37,18 @@ async function main() {
   console.log(`Transaction sent, hash: ${receipt.hash}.\nExplorer: https://explorer.galadriel.com/tx/${receipt.hash}`)
 
   // loop and sleep by 1000ms, and keep printing `lastResponse` in the contract.
-  let lastResponse = await contract.getResponse(id);
-  let newResponse = lastResponse;
+  // let lastResponse = await contract.getResponse(id);
+  // let newResponse = lastResponse;
 
-  // print w/o newline
-  console.log("Waiting for response: ");
-  while (newResponse === lastResponse) {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    newResponse = await contract.getResponse(id);
-    console.log(". ", newResponse);
-  }
+  // // print w/o newline
+  // console.log("Waiting for response: ");
+  // while (newResponse === lastResponse) {
+  //   await new Promise((resolve) => setTimeout(resolve, 1000));
+  //   newResponse = await contract.getResponse(id);
+  //   console.log(". ", newResponse);
+  // }
 
-  console.log(`Image generation completed, image URL: ${newResponse}`)
+  // console.log(`Image generation completed, image URL: ${newResponse}`)
 
 }
 

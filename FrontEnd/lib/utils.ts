@@ -25,6 +25,10 @@ export const user_posts = dataBy.general.posts
 // THEGRAPH https://thegraph.com/explorer/subgraphs/EKYuDy59ZZvn82cJkpbtSWtkJJap5qDongmpNz3xcRZc?view=Query&chain=mainnet
 // contract https://explorer.galadriel.com/address/0xF7a8Bbea3449585CB93c7852B8A3ddE6B0164F21
 
+// cd contracts/contracts/ && pnpm run callGpt
+// SEND MSG: https://explorer.galadriel.com/tx/0x82be112cd9609400123c57e24f053ebb35cb29b8534665ece5fb50a9d9f4464e
+// OPENAI RESP : https://explorer.galadriel.com/tx/0x98d04d8665035afc649cfe1a1c3be2aa733e0a36c36a244c749fab4580084a87
+
 export const contracts = {
   [customEVMChains[0].chainId]: {
     "usdc": "0x2AC06739b05ED9D93f55E8e7c4396215bf3865CD",
@@ -34,22 +38,22 @@ export const contracts = {
   },
   [arbitrumSepolia.id]: {
     "usdc": "0x5e38494DC36d49a92e9028f79c46F24bBa6181ce",
-    "test" :"0xF7a8Bbea3449585CB93c7852B8A3ddE6B0164F21",
+    "test": "0xF7a8Bbea3449585CB93c7852B8A3ddE6B0164F21",
     "spread": "0x3524B1C716224B5F35A3424AcD692DFEE55eCB70"
   },
   [scrollSepolia.id]: {
     "usdc": "0x60b8E1A41aCeDa554d78412B2A6B8f2004b99E72",
-    "test" :"0xF825E65922A895477687d3C04A0A5c2F5d3cDdD4",
+    "test": "0xF825E65922A895477687d3C04A0A5c2F5d3cDdD4",
     "spread": "0xA458600Ed05e09239ED5d9103453E7B62e8f0018"
   },
   [baseSepolia.id]: {
     "usdc": "0x6A7AfF1B6cB6313e67E57D008563739922EeA809",
-    "test" :"0x660391f83496F7F434d4CbB53BbA22c54FFd7102",
+    "test": "0x660391f83496F7F434d4CbB53BbA22c54FFd7102",
     "spread": "0xBa6F3e72A5Eb4474cf66E4Db09CAbc5fE232131F"
   },
   4457845: {
     "usdc": "0x7F00bf941464D1899d361a5f423B4a29e50d133c",
-    "test" :"0xf5ACd84FC743450178d6eC9dce317E39E52a6044",
+    "test": "0xf5ACd84FC743450178d6eC9dce317E39E52a6044",
     "spread": "0xfe71cb59250c3A76C484a799666f77Bb6F88c516"
   }
 
