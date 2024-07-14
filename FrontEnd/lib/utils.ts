@@ -33,7 +33,7 @@ export const contracts = {
     "test": "0xF7a8Bbea3449585CB93c7852B8A3ddE6B0164F21"
   },
   [arbitrumSepolia.id]: {
-    "usdc": "",
+    "usdc": "0x5e38494DC36d49a92e9028f79c46F24bBa6181ce",
     "test" :"0xF7a8Bbea3449585CB93c7852B8A3ddE6B0164F21",
     "spread": "0x3524B1C716224B5F35A3424AcD692DFEE55eCB70"
   },
@@ -46,6 +46,11 @@ export const contracts = {
     "usdc": "0x6A7AfF1B6cB6313e67E57D008563739922EeA809",
     "test" :"0x660391f83496F7F434d4CbB53BbA22c54FFd7102",
     "spread": "0xBa6F3e72A5Eb4474cf66E4Db09CAbc5fE232131F"
+  },
+  4457845: {
+    "usdc": "",
+    "test" :"0xf5ACd84FC743450178d6eC9dce317E39E52a6044",
+    "spread": "0xfe71cb59250c3A76C484a799666f77Bb6F88c516"
   }
 
 }
