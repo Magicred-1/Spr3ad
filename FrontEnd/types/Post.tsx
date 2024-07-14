@@ -132,7 +132,7 @@ export const dataBy = {
                 "isSponsored": true,
                 user: ApeCoinUser,
                 sponsoredToken: "APE",
-                tokenAddress: "0x06daeD3902Cac6C56B6906F150A54882A07Ebe10"
+                tokenAddress: "0x06daeD3902Cac6C56B6906F150A54882A07Ebe10" as `0x${string}`
             },
             {
                 "description": "Did you know? ApeCoin holders get exclusive access to upcoming Bored Ape Yacht Club events. Don't miss out!",
@@ -160,7 +160,7 @@ export const dataBy = {
                 "isSponsored": true,
                 user: BaseUser,
                 sponsoredToken: "USDC",
-                tokenAddress: "0xd7b42907D430D1C073413976CD12E205edcA0efB"
+                tokenAddress: "0xd7b42907D430D1C073413976CD12E205edcA0efB" as `0x${string}`
             },
             {
                 "description": "Base Protocol offers one of the lowest gas fees in the market. Optimize your transactions today!",
@@ -298,7 +298,7 @@ export const dataBy = {
                 "isSponsored": true,
                 user: BlastUser,
                 sponsoredToken: "USDC",
-                tokenAddress: "0xd7b42907D430D1C073413976CD12E205edcA0efB"
+                tokenAddress: "0xd7b42907D430D1C073413976CD12E205edcA0efB" as `0x${string}`
             },
             {
                 "description": "NFTs are changing the digital art world. Learn how to mint, trade, and collect your own non-fungible tokens.",
