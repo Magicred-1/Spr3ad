@@ -400,13 +400,13 @@ export const PostCard: React.FC<PostCardProps> = ({ post, changeActiveCard }) =>
         const id = await publicClient?.getChainId()!;
         const testAddress = getContract("test", id);
         writeContract({
-          abi: testABI,
-          address: testAddress,
-          functionName: "skip",
+            abi: testABI,
+            address: testAddress,
+            functionName: "skip",
         });
-      };
-    
-  
+    };
+
+
 
     const onSwipe = (direction: string) => {
         if (direction === 'right') {
@@ -426,15 +426,15 @@ export const PostCard: React.FC<PostCardProps> = ({ post, changeActiveCard }) =>
         <TinderCard
             className="absolute top-0 text-white shadow-inner border border-white/40 overflow-hidden
                       bg-black bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-50
-                      w-full h-full rounded-xl py-4 px-2"
+                      w-full h-full rounded-xl py-4 px-2 animate-fade-in"
             onSwipe={onSwipe}
             onCardLeftScreen={changeActiveCard}
             preventSwipe={['up', 'down']}
         >
             {post.isSponsored && (
-            <p className="absolute px-10 py-1 bg-blue-600 text-white top-5 -left-10 -rotate-[40deg]">
-                FEATURED
-            </p>
+                <p className="absolute px-10 py-1 bg-blue-600 text-white top-5 -left-10 -rotate-[40deg]">
+                    FEATURED
+                </p>
             )}
             <div className="relative flex flex-col items-center justify-evenly h-full">
                 <div className="flex items-center gap-x-2">
@@ -475,7 +475,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, changeActiveCard }) =>
                 )}
                 {post.isSponsored && (
                     <p className=" px-2 py-1 bg-blue-600 text-white rounded-lg">
-                EARN 50 ${post.sponsoredToken}
+                        EARN 50 ${post.sponsoredToken}
                     </p>
 
                 )
