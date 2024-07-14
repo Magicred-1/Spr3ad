@@ -52,7 +52,7 @@ export const contracts = {
     "spread": "0xBa6F3e72A5Eb4474cf66E4Db09CAbc5fE232131F"
   },
   4457845: {
-    "usdc": "",
+    "usdc": "0x7F00bf941464D1899d361a5f423B4a29e50d133c",
     "test": "0xf5ACd84FC743450178d6eC9dce317E39E52a6044",
     "spread": "0xfe71cb59250c3A76C484a799666f77Bb6F88c516"
   }
