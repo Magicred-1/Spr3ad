@@ -132,50 +132,52 @@ export const NewPost: React.FC<NewPostProps> = () => {
                         {userName}
                     </p>
                 </div> */}
-        <div className="relative w-full h-48 rounded-xl border-white border-2 flex justify-center items-center flex-col">
-          <Carousel className="w-full h-full">
-            <CarouselContent className="w-full h-full">
-              {files.map((file, index) => (
-                <CarouselItem key={index} className="w-full h-full">
-                  <Image
-                    style={{
-                      objectFit: "contain",
-                    }}
-                    alt="userImage"
-                    src={URL.createObjectURL(file)}
-                    fill={true}
-                    className="rounded-xl w-10 h-10"
-                  />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-          {files.length < 1 && <p className="text-white absolute">Add Image</p>}
-          <div className="absolute right-0 bottom-0">
-            <FileInput setFiles={setFiles} setIpfsHashes={setIpfsHashes} />
-          </div>
-        </div>
-        {/* <div className="w-full flex flex-col">
+                <div className="relative w-full h-48 rounded-xl border-white border-2 flex justify-center items-center flex-col">
+                    <Carousel className="w-full h-full max-w-xs">
+                        <CarouselContent className="w-full h-full">
+                            {files.map((file, index) => (
+                                <CarouselItem key={index} className="relative" >
+                                    <Image
+                                        style={{
+                                            objectFit: "contain",
+                                        }}
+                                        alt="userImage"
+                                        src={URL.createObjectURL(file)}
+                                        fill={true}
+                                        className="rounded-xl w-10 h-10"
+                                    />
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
+                        <CarouselPrevious className="text-white" />
+                        <CarouselNext className="text-white" />
+                    </Carousel>
+                    {files.length < 1 && <p className="text-white absolute">Add Image</p>}
+                    <div className="absolute right-0 bottom-0">
+                        <FileInput setFiles={setFiles} setIpfsHashes={setIpfsHashes} />
+                    </div>
+                </div>
+                {/* <div className="w-full flex flex-col">
           <Input className="text-white" placeholder="Title" />
         </div> */}
-        <div className="w-full flex flex-col">
-          <ReactSelect
-            onChange={(newValues) => {
-              updateTags(newValues);
-            }}
-            placeholder={"Select tags"}
-            isMulti
-            className="w-full text-xs "
-            styles={{
-              control: (state) => ({ ...state, backgroundColor: "black" }),
-              option: (state) => ({
-                ...state,
-                backgroundColor: "black",
-                color: "white",
-              }),
-            }}
-            options={options}
-          />
+                <div className="w-full flex flex-col">
+                    <ReactSelect
+                        onChange={(newValues) => {
+                            updateTags(newValues);
+                        }}
+                        placeholder={"Select tags"}
+                        isMulti
+                        className="w-full text-xs "
+                        styles={{
+                            control: (state) => ({ ...state, backgroundColor: "black" }),
+                            option: (state) => ({
+                                ...state,
+                                backgroundColor: "black",
+                                color: "white",
+                            }),
+                        }}
+                        options={options}
+                    />
 
                     <Textarea
                         onChange={(e) => setText(e.target.value)}
