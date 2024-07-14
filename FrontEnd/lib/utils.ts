@@ -2,6 +2,16 @@ import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import { customEVMChains } from "./utils/DynamicWagmiProvider"
 import { dataBy } from "@/types/Post"
+import {
+  mainnet,
+  arbitrumSepolia,
+  baseSepolia,
+  scrollSepolia,
+  morphHolesky,
+  rootstockTestnet,
+  neonDevnet,
+  zircuitTestnet,
+} from "viem/chains";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -21,7 +31,23 @@ export const contracts = {
     "galadriel": "0x4f1d722Be554DaAf0d2B934B29ABEA464bF8C6E7",
     "spread": "0xBa6F3e72A5Eb4474cf66E4Db09CAbc5fE232131F",
     "test": "0xF7a8Bbea3449585CB93c7852B8A3ddE6B0164F21"
+  },
+  [arbitrumSepolia.id]: {
+    "usdc": "",
+    "test" :"0xF7a8Bbea3449585CB93c7852B8A3ddE6B0164F21",
+    "spread": "0x3524B1C716224B5F35A3424AcD692DFEE55eCB70"
+  },
+  [scrollSepolia.id]: {
+    "usdc": "0x60b8E1A41aCeDa554d78412B2A6B8f2004b99E72",
+    "test" :"0xF825E65922A895477687d3C04A0A5c2F5d3cDdD4",
+    "spread": "0xA458600Ed05e09239ED5d9103453E7B62e8f0018"
+  },
+  [baseSepolia.id]: {
+    "usdc": "0x6A7AfF1B6cB6313e67E57D008563739922EeA809",
+    "test" :"0x660391f83496F7F434d4CbB53BbA22c54FFd7102",
+    "spread": "0xBa6F3e72A5Eb4474cf66E4Db09CAbc5fE232131F"
   }
+
 }
 
 export const getContract = (name: "usdc" | "galadriel" | "spread" | "test", chainId: number): `0x${string}` => {

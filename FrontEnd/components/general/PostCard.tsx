@@ -9,6 +9,11 @@ import { useAccount, usePublicClient, useWaitForTransactionReceipt, useWriteCont
 import { parseEther, zeroAddress } from "viem"
 import { toast } from "sonner"
 import { getContract, testABI } from "@/lib/utils"
+import {
+    galadrielABI,
+    spreadABI,
+    user_tags,
+} from "@/lib/utils";
 
 interface PostCardProps {
     post: Post,
@@ -27,17 +32,23 @@ export const PostCard: React.FC<PostCardProps> = ({ post, changeActiveCard }) =>
             hash,
         });
 
-    const handleLike = () => {
+    const handleLike = async () => {
         console.log(address)
         console.log('like');
         if (!address) {
             return;
         }
+        const id = await publicClient?.getChainId()!;
+        let erc20Address = getContract("usdc", id);
+
+        if (post.sponsoredToken === "APE") {
+            erc20Address = "0x06daeD3902Cac6C56B6906F150A54882A07Ebe10"
+        }
 
         if (post.isSponsored && post.sponsoredToken) {
 
             writeContract({
-                address: post.tokenAddress || zeroAddress,
+                address: erc20Address || zeroAddress,
                 abi: [
                     {
                         "inputs": [

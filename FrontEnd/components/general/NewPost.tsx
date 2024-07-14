@@ -90,6 +90,7 @@ export const NewPost: React.FC<NewPostProps> = () => {
         const id = await publicClient?.getChainId()!;
         const galaAddress = getContract("galadriel", id);
         const testAddress = getContract("test", id);
+
         if (id === 696969) {
             writeContract({
                 abi: galadrielABI,
