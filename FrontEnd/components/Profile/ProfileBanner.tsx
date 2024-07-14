@@ -16,8 +16,6 @@ const shrinkString = (str: string, length: number) => {
 function ProfileBanner() {
 
     const dynamicContext = useDynamicContext();
-    const { user } = useDynamicContext();
-
     const userProfile = dynamicContext.user
 
     const userWallet = dynamicContext.primaryWallet
@@ -31,14 +29,14 @@ function ProfileBanner() {
             {
                 isLogged ? (<div className="flex items-center gap-4 p-2">
                     <Avatar className="w-20 h-20">
+                        <AvatarImage src={"https://api.cloudnouns.com/v1/pfp?text="}
+                            alt="avatar"
+                            className="w-20 h-20 rounded-full"
+                        >
+
+                        </AvatarImage>
                         <AvatarFallback>
-                            <AvatarImage src={"https://api.cloudnouns.com/v1/pfp?text="}
-                                alt="avatar"
-                                className="w-20 h-20 rounded-full"
-                            >
-                                <Image src={"https://api.cloudnouns.com/v1/pfp?text="
-                                } alt="avatar" width={80} height={80} className="rounded-full" />
-                            </AvatarImage>
+
                         </AvatarFallback>
                     </Avatar>
                     <div className="flex flex-col justify-center gap-2">
