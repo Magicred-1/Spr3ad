@@ -25,7 +25,7 @@ export default function WorldcoinButton() {
   return (
     <>
       {isVerified ? (
-        "You are verified with World ID"
+        <p className="mb-3">You are verified with World ID</p>
       ) : (
         <div>
           <IDKitWidget
@@ -37,7 +37,7 @@ export default function WorldcoinButton() {
           >
             {({ open }: { open: any }) => (
               <button
-                className="cursor-pointer border-none px-5 py-2 rounded-md w-fit mx-auto bg-black hover:opacity-90 hover:bg-black transition text-white"
+                className="cursor-pointer border-none px-5 py-2 w-fit mx-auto bg-white hover:opacity-90 hover:bg-black text-black transition rounded-full mb-3"
                 onClick={open}
               >
                 Verify with World ID

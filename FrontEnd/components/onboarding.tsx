@@ -10,6 +10,7 @@ import Spline from "@splinetool/react-spline";
 import { usePublicClient, useWriteContract } from "wagmi";
 import { getContract, spreadABI, user_tags } from "@/lib/utils";
 import { Badge } from "./ui/badge";
+import WorldcoinButton from "./WorldcoinButton";
 
 function Onboarding({ refresh }: { refresh: Function }) {
   const [tags, setTags] = useState(user_tags);
@@ -128,6 +129,7 @@ function Onboarding({ refresh }: { refresh: Function }) {
       /> */}
       <h1 className="text-3xl font-bold">Get Started</h1>
       <div className="link-wallet-container">
+        <WorldcoinButton />
         <Button
           className="profile-button"
           variant={"secondary"}

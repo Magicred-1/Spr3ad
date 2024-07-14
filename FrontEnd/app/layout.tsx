@@ -5,7 +5,6 @@ import Footer from "@/components/layout-components/Footer";
 import { Metadata } from "next";
 import Header from "../components/layout-components/Header";
 
-
 export const metadata: Metadata = {
   title: "Spr3ad",
   description:
@@ -14,8 +13,7 @@ export const metadata: Metadata = {
     icon: "/defaultProfile.jpg",
     apple: "/defaultProfile.jpg",
   },
-}
-
+};
 
 export default function RootLayout({
   children,
@@ -25,9 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <DynamicWagmiProvider>
-        <body className={`flex flex-col ${lexend.className}`}>
+        <body className={` h-full flex flex-col ${lexend.className}`}>
           <Header />
-          <div className="flex-1 container items-center justify-center ">
+          <div className="flex-1 container h-full items-center justify-center ">
             {children}
           </div>
           <Footer />
